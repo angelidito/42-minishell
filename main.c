@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/05/30 21:46:50 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/01 02:47:10 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int main(void)
 {
-	printf("Hello world!\n");
+	char	*str;
 
+	str = readline("Minishell> ");
+	printf("%s\n", str);
+	
 	return(0);
 }
