@@ -6,15 +6,17 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 01:30:26 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/03 20:00:49 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include "../libs/mylibft/incs/libft.h"
 # include "colors.h"
+# include "minishell_structs.h"
+# include "pipex.h"
+
 # include <curses.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto,
 								// tputs
 # include <dirent.h>            // opendir, readdir, closedir
