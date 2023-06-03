@@ -4,3 +4,4 @@
 **/.DS_Store
 *.o
 minishell
+libs/mylibft/libft.a
