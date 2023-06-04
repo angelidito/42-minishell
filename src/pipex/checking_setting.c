@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:31:18 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:53:06 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:55:21 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	check_errors(int argc, char **argv, char **envp, t_vars *vars)
 	}
 	if (argc < 5 + vars->here_doc)
 	{
-		ft_printf("Usage: %s (here_doc LIMITER)|infile", argv[0]);
+		ft_printf("Usage ->  %s infile cmd1 cmd2 [... cmdN] outfile\n", argv[0]);
+		ft_printf("   or ->  %s here_doc LIMITER", argv[0]);
 		pf_exit(" cmd1 cmd2 [... cmdN] outfile", 1);
 	}
 	i = 0;

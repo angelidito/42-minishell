@@ -6,28 +6,11 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:47:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:48:10 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
-
-/**
- * It returns the number of elements in a char **
- * 
- * @param chararr The array of strings to be counted.
- * 
- * @return The number of elements in the array.
- */
-int	chararrsize(char **chararr)
-{
-	int	i;
-
-	i = 0;
-	while (chararr[i])
-		i++;
-	return (i);
-}
 
 char	*find_file(char **words, char **path)
 {
@@ -74,7 +57,7 @@ char	*get_cmd_file(char *cmd, char **path)
 	words = ft_split_not_escaped(cmd, ' ');
 	file = find_file(words, path);
 	free(cmd);
-	ft_freechararr(words);
+	ft_freestrarr(words);
 	return (file);
 }
 

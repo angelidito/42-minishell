@@ -6,26 +6,12 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:03:40 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:47:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:38:10 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
 
-/**
- * It frees an array of strings.
- * 
- * @param chararr The array of strings to be freed.
- */
-void	ft_freechararr(char **chararr)
-{
-	int	i;
-
-	i = -1;
-	while (chararr[++i])
-		free(chararr[i]);
-	free(chararr);
-}
 
 /**
  * It joins two strings and frees the memory of the two strings.

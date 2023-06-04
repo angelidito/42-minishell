@@ -4,9 +4,10 @@
 1. Parse a string input
 2. Execute commands
 
+
 #### Parsing User Input
-   - Read and tokenize the user input.
-   - Turns tokens into a "readable" tree (possibly a binary tree?)
+   - Lexer read and tokenize the user input.
+   - Parser turns tokens into a "readable" tree (possibly a binary tree?)
    - Handle different types of tokens (commands, arguments, redirections, etc.).
 
 #### Command Execution
@@ -47,3 +48,13 @@
    - Document the code.
    - Norminette.
    - Prepare the necessary files for submission.
+
+## Resources:
+ - [42 Docs - Minishell](https://harm-smits.github.io/42docs/projects/minishell)
+   - [Writting your own shell](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
+   - [Shell Syntax](https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html)
+ - [Hardvard about Shell](https://cs61.seas.harvard.edu/site/2019/Section7/)
+ - [Bash Cookbook](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Bash/O%27Reilly%20bash%20CookBook.pdf)
+ - [Mindblowing tree of how sell thinks](https://ast-viewer.datacamp.com/editor?code=.%2Fscript%5C%20of%5C%20four%5C%20words%20arg1%20%22arg%20number%202%22%20%27%20arg3%20%27%20%20%20%22%20arg%20%27number%204%27%20this%20is%20%5C%22bad%5C%22%20...%22%0A%0A.%2F%22script%20of%20four%20words%22%20arg1%20%22arg%20number%202%22%20%27%20arg3%20%27%20%20%20%22%20arg%20%27number%204%27%20this%20is%20%5C%22bad%5C%22%20...%22%0A&start=NA&grammar=shell)
+ - [GNU Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents)
+ - [Termios](https://dev.to/tanishqsingla/termios-564j)

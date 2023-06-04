@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/05/23 17:18:35 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:37:42 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**get_cmd_args(char const *cmd);
 
 //	GETTING_EXECUTING
 
-int		chararrsize(char **chararr);
+int		strarrsize(char **strarr);
 void	exec_cmd(char *cmd, char **path, char *envp[]);
 char	*get_cmd_file(char *cmd, char **path_var);
 char	**get_path(char *envp[]);
@@ -71,7 +71,7 @@ void	heredoc(char *limiter, int n_comands);
 
 //	FT_FUNCTIONS
 
-void	ft_freechararr(char **chararr);
+void	freestrarr(char **strarr);
 char	*ft_strjoin_n_free(const char *s1, const char *s2);
 char	*ft_strjoin_n_free_op(const char *s1, const char *s2, int f1, int f2);
 

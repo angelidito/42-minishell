@@ -6,7 +6,7 @@
 #    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/03 19:49:49 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/04 16:56:45 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,13 @@
 # **************************************************************************** #
 
 NAME			=	minishell
+NAME_PIPEX		=	pipex
 
 # **************************************************************************** #
 # ****************************       FILES       ***************************** #
 # **************************************************************************** #
 
+# ****************************     MINISHELL     ***************************** #
 SRC				=	\
 					src/pipex/backslashes.c \
 					src/pipex/case_n_cmds.c \
@@ -33,9 +35,25 @@ SRC				=	\
 					src/main.c
 OBJS				=	$(SRC:.c=.o)
 
+# ****************************  MINISHELL BONUS  ***************************** #
 SRC_B			=	\
 					src/main.c
 OBJS_B			=	$(SRC_B:.c=.o)
+
+# ****************************       PIPEX       ***************************** #
+SRC_PIPEX		=	\
+					src/pipex/backslashes.c \
+					src/pipex/case_n_cmds.c \
+					src/pipex/checking_setting.c \
+					src/pipex/errors.c \
+					src/pipex/get_cmd_args.c \
+					src/pipex/getting_executing.c \
+					src/pipex/here_doc.c \
+					src/pipex/ft_functions.c \
+					src/pipex/ft_split_not_escaped.c \
+					src/pipex/pipex_main.c
+OBJS_PIPEX		=	$(SRC_PIPEX:.c=.o)
+
 
 # **************************************************************************** #
 # *****************************       LIBS       ***************************** #
@@ -94,7 +112,7 @@ $(NAME): $(OBJS)
 	@echo
 	@echo
 	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
-	@echo "$(NOCOLOR)[$(GREEN)-------$(BBLUE) PIPEX - OK $(NOCOLOR)$(GREEN)-------$(NOCOLOR)]"
+	@echo "$(NOCOLOR)[$(GREEN)-----$(BBLUE) MINISHELL - OK $(NOCOLOR)$(GREEN)-----$(NOCOLOR)]"
 	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
 	@echo
 	@echo
@@ -116,7 +134,7 @@ fclean:
 	@echo "$(GREEN)$(NAME):$(NOCOLOR) [$(RED)Removing $(BLUE)*.o$(NOCOLOR)]"
 	$(RM) $(OBJS) $(OBJS_B)
 	@echo "$(GREEN)$(NAME):$(NOCOLOR) [$(RED)Removing $(BLUE)$(NAME)$(NOCOLOR)]$(RED)"
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_PIPEX)
 	@echo
 
 bonus: $(OBJS_B)
@@ -128,6 +146,19 @@ bonus: $(OBJS_B)
 	@echo
 	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
 	@echo "$(NOCOLOR)[$(GREEN)-----$(BBLUE) MINISHELL - OK $(NOCOLOR)$(GREEN)-----$(NOCOLOR)]"
+	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
+	@echo
+	@echo
+	
+pipex: $(OBJS_PIPEX)
+	@${MAKES}
+	@echo
+	@echo "$(GREEN)$(NAME_PIPEX):$(NOCOLOR) [Compilation:$(YELLOW) $@$(NOCOLOR)]$(GRAY)"
+	$(CC) $(C_FLAGS) $(OBJS_PIPEX) $(LIBFT) -o $(NAME_PIPEX) ${LINKS}
+	@echo
+	@echo
+	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
+	@echo "$(NOCOLOR)[$(GREEN)-------$(BBLUE) PIPEX - OK $(NOCOLOR)$(GREEN)-------$(NOCOLOR)]"
 	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
 	@echo
 	@echo

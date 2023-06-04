@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:47:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:08:36 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,14 @@ int	open_out(char *outfile, int flags, int mode, int pid)
 	}
 	return (fd_of);
 }
-
+/**
+ * Executes the first command in the pipeline and redirects the input from the
+ * input file. It also redirects the output to the pipe that connects it to the
+ * parent process.
+ * 
+ * @param vars 
+ * @param pipe_fd 
+ */
 void	n_child(t_vars *vars, int *pipe_fd)
 {
 	int	fd_infile;
@@ -76,6 +83,15 @@ void	n_child(t_vars *vars, int *pipe_fd)
 	exec_cmd(vars->cmds[0], vars->path, vars->envp);
 }
 
+/**
+ * Executes a command and redirects the output to the output file or to the pipe
+ * that connects it to partent process.
+ * 
+ * @param vars The variables used in the program.
+ * @param pipe_fd The pipe. 
+ * @param fd_out The file descriptor of the output file or the parent's pipe.
+ * @param cmd The command to execute.
+ */
 void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
 	check_cmd(vars->cmds[cmd], vars->path);
@@ -84,7 +100,18 @@ void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 	close(pipe_fd[1]);
 	exec_cmd(vars->cmds[cmd], vars->path, vars->envp);
 }
-
+/**
+ * It executes the commands in the pipeline and redirects the output to the
+ * output file. It also redirects the input from the input file.
+ * - It uses pipes to connect the commands.
+ * - It uses fork to create new processes.
+ * - This function is recursive.
+ * 
+ * @param vars The variables used in the program.
+ * @param prev_fd The pipes of the previous command. It is NULL if it is the 
+ * first command.
+ * @param n_comands Number of commands in the pipeline.
+ */
 void	case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 {
 	int		pipe_fd[2];
@@ -107,7 +134,7 @@ void	case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | O_TRUNC, 0644, pid);
 	else
 		fd_of = prev_fd[1];
-	if (pid == 0)
+	if (pid == 0) 
 		case_n_cmds(vars, pipe_fd, n_comands - 1);
 	else
 		n_parent(vars, pipe_fd, fd_of, n_comands - 1);

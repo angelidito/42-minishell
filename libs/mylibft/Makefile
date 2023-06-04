@@ -6,7 +6,7 @@
 #    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 14:17:59 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/03 20:45:51 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/04 17:47:23 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS	=	\
 			srcs/ft_putstr_fd.c \
 			srcs/ft_split.c \
 			srcs/ft_str_replace_dup_whitespaces.c \
+			srcs/ft_strarr.c \
 			srcs/ft_strchr.c \
 			srcs/ft_strcmp.c \
 			srcs/ft_strdup.c \

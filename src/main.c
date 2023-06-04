@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/03 21:51:37 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:48:06 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse(char *str)
 		printf("%s%s%s\n", TEXT_BG_CYAN, tokens[i], TEXT_RESET);
 		i++;
 	}
-	ft_freechararr(tokens);
+	ft_freestrarr(tokens);
 	printf("\n%sft_split_not_escaped%s\n", TEXT_RED, TEXT_RESET);
 	tokens = ft_split_not_escaped(str, ' ');
 	i = 0;
