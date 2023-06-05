@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd_args.c                                     :+:      :+:    :+:   */
+/*   pipex_get_cmd_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:23:10 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:47:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 10:56:37 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	**lst_to_arr(t_list **lst)
  * 
  * @return An array of strings, each one being an argument of the command.
  */
-char	**get_cmd_args(char const *cmd)
+char	**pipex_get_cmd_args(char const *cmd)
 {
 	t_list	**arg_lst;
 	char	**arg_arr;

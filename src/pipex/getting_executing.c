@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/04 17:48:10 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:08:22 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*find_file(char **words, char **path)
  * 
  * @return The path of the command.
  */
-char	*get_cmd_file(char *cmd, char **path)
+char	*pipex_get_cmd_file(char *cmd, char **path)
 {
 	int		i;
 	char	**words;
@@ -69,7 +69,7 @@ char	*get_cmd_file(char *cmd, char **path)
  * 
  * @return the path of the environment variable.
  */
-char	**get_path(char *envp[])
+char	**pipex_get_path(char *envp[])
 {
 	int	i;
 
@@ -89,13 +89,13 @@ char	**get_path(char *envp[])
  * 
  * @return The array of arguments.
  */
-void	exec_cmd(char *cmd, char **path, char *envp[])
+void	pipex_exec_cmd(char *cmd, char **path, char *envp[])
 {
 	char	**args;
 	char	*file;
 
-	args = get_cmd_args(cmd);
-	file = get_cmd_file(cmd, path);
+	args = pipex_get_cmd_args(cmd);
+	file = pipex_get_cmd_file(cmd, path);
 	execve(file, args, envp);
 	exit(127);
 }

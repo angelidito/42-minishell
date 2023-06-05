@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 20:00:49 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:25:41 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "colors.h"
 # include "minishell_structs.h"
 # include "pipex.h"
-
 # include <curses.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto,
 								// tputs
 # include <dirent.h>            // opendir, readdir, closedir
@@ -35,5 +34,7 @@
 # include <termios.h>           // isatty, tcsetattr, tcgetattr
 # include <unistd.h>            // write, access, fork, execve, close, pipe,
 								//  dup, dup2, getpid, getppid, getcwd, chdir
+
+t_cmd	*get_t_cmd(char *str);
 
 #endif

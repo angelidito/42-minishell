@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/04 17:37:42 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:13:27 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,55 +28,35 @@
 void	remove_escapes(t_list **lst);
 char	*str_remove_escapes(char *str);
 
-//	CASE TWO CMDS (NO BONUS)
-
-void	case_2_cmds(t_vars *vars);
 
 //	CASE _N_ CMDS (BONUS)
 
-void	case_n_cmds(t_vars *vars, int *prev_fd, int n_comands);
+void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands);
 
 //	CHECKING_SETTING (BONUS)
 
-void	check_cmd(char *cmd, char **path);
-void	check_errors(int argc, char **argv, char **envp, t_vars *vars);
+void	pipex_check_cmd(char *cmd, char **path);
+void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars);
 void	set_vars(int argc, char **argv, char **envp, t_vars *vars);
-
-//	CHECKING_SETTING (NO BONUS)
-
-void	check_cmd(char *cmd, char **path);
-void	check_errors_no_bonus(int argc, char **argv, char **envp);
-void	set_vars_no_bonus(int argc, char **argv, char **envp, t_vars *vars);
 
 //	ERRORS
 
-void	my_perror(char *s);
-void	print_stderr(char *str);
-void	pf_exit(char *s, int fd);
+void	pipex_my_perror(char *s);
+void	pipex_print_stderr(char *str);
+void	pipex_pf_exit(char *s, int fd);
 
 //	GET COMAND ARGUMENTS
 
-char	**get_cmd_args(char const *cmd);
+char	**pipex_get_cmd_args(char const *cmd);
 
 //	GETTING_EXECUTING
 
-int		strarrsize(char **strarr);
-void	exec_cmd(char *cmd, char **path, char *envp[]);
-char	*get_cmd_file(char *cmd, char **path_var);
-char	**get_path(char *envp[]);
+void	pipex_exec_cmd(char *cmd, char **path, char *envp[]);
+char	*pipex_get_cmd_file(char *cmd, char **path_var);
+char	**pipex_get_path(char *envp[]);
 
 // HERE_DOC
 
-void	heredoc(char *limiter, int n_comands);
-
-//	FT_FUNCTIONS
-
-void	freestrarr(char **strarr);
-char	*ft_strjoin_n_free(const char *s1, const char *s2);
-char	*ft_strjoin_n_free_op(const char *s1, const char *s2, int f1, int f2);
-
-// FT_SPLIT_NOT_ESCAPED
-
-char	**ft_split_not_escaped(char const *s, char c);
+void	pipex_heredoc(char *limiter, int n_comands);
 
 #endif

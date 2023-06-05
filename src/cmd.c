@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_structs.h                                :+:      :+:    :+:   */
+/*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 10:51:30 by angmarti         ###   ########.fr       */
+/*   Created: 2023/06/05 10:21:15 by angmarti          #+#    #+#             */
+/*   Updated: 2023/06/05 12:10:29 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_STRUCTS_H
-# define MINISHELL_STRUCTS_H
+#include "../incs/minishell.h"
 
-// ? Completar si es necesario
-typedef struct s_cmd
+char	**get_path_arr(void);
+
+// TODO: fix for comands inside quotes and spaces in its name, and for relative/absolute paths.
+t_cmd	*get_t_cmd(char *str)
 {
-	char	*executable;
-	char	*cmd;
-	char	**args;
-}			t_cmd;
+	t_cmd *cmd;
+	cmd = malloc(sizeof(t_cmd));
+	if (!cmd)
+		return (cmd);
+	cmd->cmd = str;
+	cmd->executable = pipex_get_cmd_file(str, get_path_arr());
+	cmd->args = pipex_get_cmd_args(str);
 
-// ? 
-typedef struct s_tree_node
-{
-	char				*data;
-	struct s_tree_node	*left;
-	struct s_tree_node	*right;
-}						t_tree_node;
-
-
-
-#endif
+	return (cmd);
+}

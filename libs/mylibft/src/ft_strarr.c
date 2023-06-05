@@ -18,11 +18,13 @@
  * Also prints a title before the array if it is set. 
  * 
  * @param arr String array.
+ * @param list If 1, prints a dash list. If 2, it prints a indexed list.
  * @param prefix Sstring to print before each element of the array.
  * @param suffix String to print after each element of the array.
  * @param title String to print before the array.
  */
-void	ft_print_strarr_op(char **arr, char *prefix, char *suffix, char *title)
+void	ft_print_strarr_op(char **arr, int list, char *prefix, char *suffix,
+		char *title)
 {
 	int	i;
 
@@ -34,9 +36,19 @@ void	ft_print_strarr_op(char **arr, char *prefix, char *suffix, char *title)
 	i = -1;
 	while (arr[++i])
 	{
-		ft_putstr_fd(prefix, STDOUT_FILENO);
+		if (list == 1)
+			ft_putstr_fd(" - ", STDOUT_FILENO);
+		else if (list == 2)
+		{
+			ft_putstr_fd(" ", STDOUT_FILENO);
+			ft_putnbr_fd(i + 1, STDOUT_FILENO);
+			ft_putstr_fd(". ", STDOUT_FILENO);
+		}
+		if (prefix)
+			ft_putstr_fd(prefix, STDOUT_FILENO);
 		ft_putstr_fd(arr[i], STDOUT_FILENO);
-		ft_putstr_fd(suffix, STDOUT_FILENO);
+		if (suffix)
+			ft_putstr_fd(suffix, STDOUT_FILENO);
 		ft_putstr_fd("\n", STDOUT_FILENO);
 	}
 }
@@ -49,7 +61,7 @@ void	ft_print_strarr_op(char **arr, char *prefix, char *suffix, char *title)
  */
 void	ft_print_strarr(char **arr)
 {
-	ft_print_strarr_op(arr, "", "\n", NULL);
+	ft_print_strarr_op(arr, 0, "", "", NULL);
 }
 
 /**
@@ -76,10 +88,28 @@ int	ft_strarrsize(char **strarr)
  */
 void	ft_freestrarr(char **strarr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (strarr[++i])
+		free(strarr[i]);
+	free(strarr);
+}
+
+/**
+ * It frees the strings from start to end position.
+ * 
+ * 
+ * @param strarr The array of strings to be freed.
+ * @param start The start position.
+ * @param end The end position.
+ */
+void	ft_freestrarr_op(char **strarr, int start, int end)
+{
+	int i;
+
+	i = start - 1;
+	while (++i < end)
 		free(strarr[i]);
 	free(strarr);
 }

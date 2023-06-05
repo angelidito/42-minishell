@@ -6,7 +6,7 @@
 #    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/04 16:56:45 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/05 11:33:17 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,12 @@ SRC				=	\
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
 					src/pipex/here_doc.c \
-					src/pipex/ft_functions.c \
-					src/pipex/ft_split_not_escaped.c \
+					src/cmd.c \
+					src/env.c \
 					src/main.c
+					
+# src/pipex/ft_functions.c
+
 OBJS				=	$(SRC:.c=.o)
 
 # ****************************  MINISHELL BONUS  ***************************** #
@@ -51,7 +54,7 @@ SRC_PIPEX		=	\
 					src/pipex/here_doc.c \
 					src/pipex/ft_functions.c \
 					src/pipex/ft_split_not_escaped.c \
-					src/pipex/pipex_main.c
+					src/pipex/main.c
 OBJS_PIPEX		=	$(SRC_PIPEX:.c=.o)
 
 

@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:31:18 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/04 16:55:21 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:08:28 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@
  * @param cmd the command to check
  * @param path the path to the command
  */
-void	check_cmd(char *cmd, char **path)
+void	pipex_check_cmd(char *cmd, char **path)
 {
 	char	*file;
 
-	file = get_cmd_file(cmd, path);
+	file = pipex_get_cmd_file(cmd, path);
 	if (access(cmd, F_OK) == 0 && !file)
 	{
-		print_stderr("pipex: permission denied: ");
-		print_stderr(cmd);
-		print_stderr("\n");
+		pipex_print_stderr("pipex: permission denied: ");
+		pipex_print_stderr(cmd);
+		pipex_print_stderr("\n");
 	}
 	else if (!file)
 	{
-		print_stderr("pipex: command not found: ");
-		print_stderr(cmd);
-		print_stderr("\n");
+		pipex_print_stderr("pipex: command not found: ");
+		pipex_print_stderr(cmd);
+		pipex_print_stderr("\n");
 	}
 	free(file);
 }
@@ -51,19 +51,19 @@ void	set_vars(int argc, char **argv, char **envp, t_vars *vars)
 {
 	int	i;
 
-	vars->path = get_path(envp);
+	vars->path = pipex_get_path(envp);
 	vars->envp = envp;
 	if (vars->here_doc)
 	{
 		vars->infile = TEMP_HERE_DOC;
-		heredoc(argv[2], argc - 5);
+		pipex_heredoc(argv[2], argc - 5);
 	}
 	else
 		vars->infile = argv[1];
 	vars->outfile = argv[argc - 1];
 	vars->cmds = ft_calloc(argc - (2 + vars->here_doc), sizeof(char *));
 	if (!vars->cmds)
-		pf_exit("Malloc error", STDERR_FILENO);
+		pipex_pf_exit("Malloc error", STDERR_FILENO);
 	i = 1 + vars->here_doc;
 	while (++i < argc - 1)
 		vars->cmds[i - (2 + vars->here_doc)] = argv[i];
@@ -83,7 +83,7 @@ void	set_vars(int argc, char **argv, char **envp, t_vars *vars)
  * @param envp Environment variables
  * @param vars Variables used in the program.
  */
-void	check_errors(int argc, char **argv, char **envp, t_vars *vars)
+void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars)
 {
 	int		i;
 	char	*tmp;
@@ -97,14 +97,14 @@ void	check_errors(int argc, char **argv, char **envp, t_vars *vars)
 	{
 		tmp = ft_strtrim(argv[i], " \t\v\f\r");
 		if (!tmp || !*tmp)
-			pf_exit("Wrong arguments.", 1);
+			pipex_pf_exit("Wrong arguments.", 1);
 		free(tmp);
 	}
 	if (argc < 5 + vars->here_doc)
 	{
 		ft_printf("Usage ->  %s infile cmd1 cmd2 [... cmdN] outfile\n", argv[0]);
 		ft_printf("   or ->  %s here_doc LIMITER", argv[0]);
-		pf_exit(" cmd1 cmd2 [... cmdN] outfile", 1);
+		pipex_pf_exit(" cmd1 cmd2 [... cmdN] outfile", 1);
 	}
 	i = 0;
 	while (envp && envp[i] && ft_strncmp(envp[i], "PATH=", 5))

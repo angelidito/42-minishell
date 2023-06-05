@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_structs.h                                :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 10:51:30 by angmarti         ###   ########.fr       */
+/*   Created: 2023/06/05 11:30:24 by angmarti          #+#    #+#             */
+/*   Updated: 2023/06/05 12:07:39 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_STRUCTS_H
-# define MINISHELL_STRUCTS_H
-
-// ? Completar si es necesario
-typedef struct s_cmd
+#include "../incs/minishell.h"
+/**
+ * TODO: MUST receive the char **envp and not use getenv() because it wont work 
+ * properly if a minisheel is executed inside another minishell.
+ * 
+ * @param envp 
+ * @return char** 
+ */
+char **get_path_arr()
 {
-	char	*executable;
-	char	*cmd;
-	char	**args;
-}			t_cmd;
+	char **path_arr;
 
-// ? 
-typedef struct s_tree_node
-{
-	char				*data;
-	struct s_tree_node	*left;
-	struct s_tree_node	*right;
-}						t_tree_node;
-
-
-
-#endif
+	path_arr = ft_split(getenv("PATH"), ':');
+	return (path_arr);
+}

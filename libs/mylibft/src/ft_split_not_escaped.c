@@ -6,11 +6,11 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 13:30:02 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 19:47:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:22:43 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/pipex.h"
+#include "../incs/libft.h"
 
 /**
  * The function counts the number of escaped characters in a given string 
