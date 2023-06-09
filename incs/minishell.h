@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 11:25:41 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:19:17 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@
 # include <termios.h>           // isatty, tcsetattr, tcgetattr
 # include <unistd.h>            // write, access, fork, execve, close, pipe,
 								//  dup, dup2, getpid, getppid, getcwd, chdir
+
+// ENV
+
+char *my_getenv(const char *name, t_list **env);
+t_list **get_env_lst(int argc, char const *argv[], char **envp);
+
+// CMD
 
 t_cmd	*get_t_cmd(char *str);
 

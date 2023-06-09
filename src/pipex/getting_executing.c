@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getting_executing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 11:08:22 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/08 23:54:15 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	*find_file(char **words, char **path)
  */
 char	*pipex_get_cmd_file(char *cmd, char **path)
 {
-	int		i;
 	char	**words;
 	char	*file;
 
@@ -53,7 +52,6 @@ char	*pipex_get_cmd_file(char *cmd, char **path)
 	if ((*cmd == '/' || (*cmd == '.' && cmd[1] == '/')) && access(cmd,
 			X_OK) == 0)
 		return ((char *)cmd);
-	i = -1;
 	words = ft_split_not_escaped(cmd, ' ');
 	file = find_file(words, path);
 	free(cmd);

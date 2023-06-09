@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/05 12:03:15 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:10:09 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse(char *str)
 	printf("executable: %s\n", cmd->executable);
 	if (cmd->args)
 	{
-		ft_print_strarr_op(cmd->args, 2, TEXT_BG_GREEN, TEXT_RESET, "cmd->args");
+		ft_print_strarr_op(cmd->args, 2, TEXT_BG_BLUE, TEXT_RESET, "cmd->args");
 		ft_freestrarr(cmd->args);
 	}
 	if (cmd->executable)
@@ -59,16 +59,33 @@ void	parse(char *str)
 	// }
 }
 
-int main(int argc, char const *argv[], char **envp)
+
+
+void	lst_print_content(void *content)
+{
+	ft_printf("node content: %s\n", (char *)content);
+}
+
+int	main(int argc, char const *argv[], char **envp)
 {
 	char	*str;
+	int		exit;
+	t_list	**env; // ? should this be a global variable?
 
-	while (ft_strcmp(str, "exit"))
+	env = get_env_lst(argc, argv, envp);
+	if (!env)
+	return (1);
+	ft_lstiter(*env, lst_print_content);
+	exit = 0;
+	while (!exit)
 	{
 		str = readline("minishell> ");
 		parse(str);
 		add_history(str);
+		if (!ft_strcmp(str, "exit"))
+			exit = 1;
 		free(str);
 	}
+	printf("%sMinishell has finished\n", TEXT_BG_YELLOW);
 	return (0);
 }
