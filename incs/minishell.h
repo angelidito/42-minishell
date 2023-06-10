@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/09 18:19:17 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:38:02 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,19 @@
 								// getppid
 # include <termios.h>           // isatty, tcsetattr, tcgetattr
 # include <unistd.h>            // write, access, fork, execve, close, pipe,
-								//  dup, dup2, getpid, getppid, getcwd, chdir
+								// dup, dup2, getpid, getppid, getcwd, chdir
 
 // ENV
 
-char *my_getenv(const char *name, t_list **env);
-t_list **get_env_lst(int argc, char const *argv[], char **envp);
+char	*my_getenv(const char *name, t_list **env);
+t_list	**get_env_lst(int argc, char const *argv[], char **envp);
 
 // CMD
 
-t_cmd	*get_t_cmd(char *str);
+t_cmd	*get_t_cmd(char *str, t_list **env);
+
+// UTILS
+
+char **lst_to_arr(t_list **lst);
 
 #endif

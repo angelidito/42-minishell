@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
+#    By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/05 11:33:17 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/10 14:50:46 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,6 @@ SRC				=	\
 
 OBJS				=	$(SRC:.c=.o)
 
-# ****************************  MINISHELL BONUS  ***************************** #
-SRC_B			=	\
-					src/main.c
-OBJS_B			=	$(SRC_B:.c=.o)
-
 # ****************************       PIPEX       ***************************** #
 SRC_PIPEX		=	\
 					src/pipex/backslashes.c \
@@ -52,9 +47,9 @@ SRC_PIPEX		=	\
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
 					src/pipex/here_doc.c \
-					src/pipex/ft_functions.c \
-					src/pipex/ft_split_not_escaped.c \
-					src/pipex/main.c
+					src/pipex/pipex_main.c
+# src/pipex/ft_split_not_escaped.c \
+# src/pipex/ft_functions.c 
 OBJS_PIPEX		=	$(SRC_PIPEX:.c=.o)
 
 
@@ -140,20 +135,7 @@ fclean:
 	$(RM) $(NAME) $(NAME_PIPEX)
 	@echo
 
-bonus: $(OBJS_B)
-	@${MAKES}
-	@echo
-	@echo "$(GREEN)$(NAME):$(NOCOLOR) [Compilation:$(YELLOW) $(NAME) $@$(NOCOLOR)]$(GRAY)"
-	$(CC) $(C_FLAGS) $(OBJS_B) $(LIBFT) -o $(NAME)
-	@echo
-	@echo
-	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
-	@echo "$(NOCOLOR)[$(GREEN)-----$(BBLUE) MINISHELL - OK $(NOCOLOR)$(GREEN)-----$(NOCOLOR)]"
-	@echo "$(NOCOLOR)[$(GREEN)--------------------------$(NOCOLOR)]"
-	@echo
-	@echo
-	
-pipex: $(OBJS_PIPEX)
+$(NAME_PIPEX): $(OBJS_PIPEX)
 	@${MAKES}
 	@echo
 	@echo "$(GREEN)$(NAME_PIPEX):$(NOCOLOR) [Compilation:$(YELLOW) $@$(NOCOLOR)]$(GRAY)"

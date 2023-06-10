@@ -6,13 +6,13 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/08 23:54:15 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:56:58 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
 
-char	*find_file(char **words, char **path)
+char	*pipex_find_file(char **words, char **path)
 {
 	char	*file;
 	int		i;
@@ -53,7 +53,7 @@ char	*pipex_get_cmd_file(char *cmd, char **path)
 			X_OK) == 0)
 		return ((char *)cmd);
 	words = ft_split_not_escaped(cmd, ' ');
-	file = find_file(words, path);
+	file = pipex_find_file(words, path);
 	free(cmd);
 	ft_freestrarr(words);
 	return (file);

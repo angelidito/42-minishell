@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   case_n_cmds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 11:08:01 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:53:27 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
  * first command.
  * @param n_comands Number of commands in the pipeline.
  */
-void	case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
+void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
@@ -135,7 +135,7 @@ void	case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 	else
 		fd_of = prev_fd[1];
 	if (pid == 0) 
-		case_n_cmds(vars, pipe_fd, n_comands - 1);
+		pipex_case_n_cmds(vars, pipe_fd, n_comands - 1);
 	else
 		n_parent(vars, pipe_fd, fd_of, n_comands - 1);
 }

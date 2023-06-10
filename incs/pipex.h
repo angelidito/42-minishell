@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 11:13:27 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:31:43 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define _GNU_SOURCE
 # include "../libs/mylibft/incs/libft.h"
 # include "colors.h"
+# include "minishell.h"
 # include "pipex_structs.h"
 # include <fcntl.h> /* Open function */
 # include <time.h>
@@ -27,7 +28,6 @@
 
 void	remove_escapes(t_list **lst);
 char	*str_remove_escapes(char *str);
-
 
 //	CASE _N_ CMDS (BONUS)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/05 11:06:31 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:51:21 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main(int argc, char **argv, char **envp)
 
 	pipex_check_errors(argc, argv, envp, &vars);
 	set_vars(argc, argv, envp, &vars);
-	case_n_cmds(&vars, NULL, ft_strarrsize(vars.cmds));
+	pipex_case_n_cmds(&vars, NULL, ft_strarrsize(vars.cmds));
 	return (0);
 }

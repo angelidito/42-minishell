@@ -6,36 +6,37 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:30:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/09 18:12:53 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:35:08 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/minishell.h"
 
+
+
 /**
- * TODO: MUST receive the char **envp and not use getenv() because it wont work
- * properly if a minisheel is executed inside another minishell.
+ * Obtains the current value of the environment variable required.
+ * Do NOT modify the string returned by this function.
  *
- * @param envp
- * @return char**
+ * @param name Name of the environment variable.
+ * @param env List of environment variables.
+ *
+ * @return The value of the environment variable as a NULL-terminated string.
+ * If the variable name is not in the current environment, NULL is returned.
  */
-char	**get_path_arr(void)
+char	*my_getenv(const char *name, t_list **env)
 {
-	char	**path_arr;
-
-	path_arr = ft_split(getenv("PATH"), ':');
-	return (path_arr);
-}
-
-char *my_getenv(const char *name, t_list **env)
-{
+	int		len;
+	char	*var;
 	t_list	*node;
 
 	node = *env;
 	while (node)
 	{
-		if (ft_strncmp(node->content, name, ft_strlen(name)) == 0)
-			return (node->content + ft_strlen(name) + 1);
+		var = node->content;
+		len = ft_strlen(name);
+		if (ft_strncmp(name, var, len) == 0 && var[len] == '=')
+			return (var + len + 1);
 		node = node->next;
 	}
 	return (NULL);
@@ -51,7 +52,7 @@ char *my_getenv(const char *name, t_list **env)
  * ? variables should be the same that in the parent process, not the
  * ? environment vars of the terminal where the fist minishell was executed.
  *
- * @param argc
+ * @param argc 
  * @param argv
  * @param envp
  *
