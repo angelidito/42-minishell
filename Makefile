@@ -6,7 +6,7 @@
 #    By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/10 14:50:46 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/11 16:49:16 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC				=	\
 					src/pipex/here_doc.c \
 					src/cmd.c \
 					src/env.c \
+					src/utils.c \
 					src/main.c
 					
 # src/pipex/ft_functions.c

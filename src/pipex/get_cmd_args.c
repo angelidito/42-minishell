@@ -68,7 +68,7 @@ void	set_arg_lst(char const *cmd, t_list **arg_lst)
 		ft_lstadd_back(arg_lst, ft_lstnew(ft_substr(cmd, i, len)));
 }
 
-char	**lst_to_arr(t_list **lst)
+char	**pipex_lst_to_arr(t_list **lst)
 {
 	char	**arr;
 	t_list	*node;
@@ -110,6 +110,6 @@ char	**pipex_get_cmd_args(char const *cmd)
 		return (NULL);
 	set_arg_lst(cmd, arg_lst);
 	remove_escapes(arg_lst);
-	arg_arr = lst_to_arr(arg_lst);
+	arg_arr = pipex_lst_to_arr(arg_lst);
 	return (arg_arr);
 }
