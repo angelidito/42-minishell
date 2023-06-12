@@ -6,61 +6,68 @@
 #    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 14:17:59 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/03 01:19:44 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/05 11:21:28 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS	=	srcs/ft_bzero.c \
-			srcs/ft_isalnum.c \
-			srcs/ft_isalpha.c \
-			srcs/ft_isascii.c \
-			srcs/ft_isdigit.c \
-			srcs/ft_isprint.c \
-			srcs/ft_memcpy.c \
-			srcs/ft_memset.c \
-			srcs/ft_memmove.c \
-			srcs/ft_memchr.c \
-			srcs/ft_memcmp.c \
-			srcs/ft_calloc.c \
-			srcs/ft_strchr.c \
-			srcs/ft_strlcat.c \
-			srcs/ft_strlcpy.c \
-			srcs/ft_strlen.c \
-			srcs/ft_strncmp.c \
-			srcs/ft_strnstr.c \
-			srcs/ft_atoi.c \
-			srcs/ft_strrchr.c \
-			srcs/ft_tolower.c \
-			srcs/ft_toupper.c \
-			srcs/ft_strdup.c \
-			srcs/ft_strjoin.c \
-			srcs/ft_strtrim.c \
-			srcs/ft_substr.c \
-			srcs/ft_split.c \
-			srcs/ft_itoa.c \
-			srcs/ft_putchar_fd.c \
-			srcs/ft_putendl_fd.c \
-			srcs/ft_putnbr_fd.c \
-			srcs/ft_putstr_fd.c \
-			srcs/ft_strmapi.c \
-			srcs/ft_striteri.c \
-			srcs/ft_lstnew_bonus.c \
-			srcs/ft_lstadd_back_bonus.c \
-			srcs/ft_lstadd_front_bonus.c \
-			srcs/ft_lstsize_bonus.c \
-			srcs/ft_lstdelone_bonus.c \
-			srcs/ft_lstclear_bonus.c \
-			srcs/ft_lstiter_bonus.c \
-			srcs/ft_lstmap_bonus.c \
-			srcs/ft_lstlast_bonus.c \
-			srcs/ft_printf.c \
-			srcs/ft_printf_puts_fd.c \
-			srcs/ft_printf_puts_bases_fd.c \
-			srcs/get_next_line.c \
-			srcs/get_next_line_utils.c \
-			srcs/ft_isspace.c \
-			srcs/ft_str_replace_dup_whitespaces.c
+SRCS	=	\
+			src/ft_atoi.c \
+			src/ft_bzero.c \
+			src/ft_calloc.c \
+			src/ft_isalnum.c \
+			src/ft_isalpha.c \
+			src/ft_isascii.c \
+			src/ft_isdigit.c \
+			src/ft_isprint.c \
+			src/ft_isspace.c \
+			src/ft_itoa.c \
+			src/ft_lstadd_back_bonus.c \
+			src/ft_lstadd_front_bonus.c \
+			src/ft_lstclear_bonus.c \
+			src/ft_lstdelone_bonus.c \
+			src/ft_lstiter_bonus.c \
+			src/ft_lstlast_bonus.c \
+			src/ft_lstmap_bonus.c \
+			src/ft_lstnew_bonus.c \
+			src/ft_lstsize_bonus.c \
+			src/ft_memchr.c \
+			src/ft_memcmp.c \
+			src/ft_memcpy.c \
+			src/ft_memmove.c \
+			src/ft_memset.c \
+			src/ft_printf.c \
+			src/ft_printf_puts_bases_fd.c \
+			src/ft_printf_puts_fd.c \
+			src/ft_putchar_fd.c \
+			src/ft_putendl_fd.c \
+			src/ft_putnbr_fd.c \
+			src/ft_putstr_fd.c \
+			src/ft_split.c \
+			src/ft_split_not_escaped.c \
+			src/ft_str_replace_dup_whitespaces.c \
+			src/ft_strarr.c \
+			src/ft_strchr.c \
+			src/ft_strcmp.c \
+			src/ft_strdup.c \
+			src/ft_striteri.c \
+			src/ft_strjoin.c \
+			src/ft_strlcat.c \
+			src/ft_strlcpy.c \
+			src/ft_strlen.c \
+			src/ft_strmapi.c \
+			src/ft_strncmp.c \
+			src/ft_strnstr.c \
+			src/ft_strrchr.c \
+			src/ft_strtrim.c \
+			src/ft_substr.c \
+			src/ft_tolower.c \
+			src/ft_toupper.c \
+			src/get_next_line.c \
+			src/get_next_line_utils.c
+
+
+
 OBJS	= $(SRCS:.c=.o)
 
 #----------------------------------------------------------COMPILER

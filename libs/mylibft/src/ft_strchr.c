@@ -6,21 +6,21 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:00:37 by angmarti          #+#    #+#             */
-/*   Updated: 2022/12/16 13:59:01 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:11:45 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libft.h"
 
 /**
- * It returns a pointer to the first occurrence of the character c in the 
- * string s
+ * Search for the first occurrence of the character c a string s and returns
+ * a pointer to it, or NULL if the character is not found.
  * 
- * @param s The string to search.
+ * @param s The string to search in.
  * @param c The character to search for.
  * 
- * @return A pointer to the first occurrence of the character c in the 
- * string s.
+ * @return A pointer to the first occurrence of the character c.
+ * NULL if the character is not found.
  */
 char	*ft_strchr(const char *s, int c)
 {

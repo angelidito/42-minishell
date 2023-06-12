@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:41:34 by angmarti          #+#    #+#             */
-/*   Updated: 2023/05/05 17:42:04 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:00:22 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@
 # define TEXT_MAGENTA "\033[35m"
 # define TEXT_CYAN "\033[36m"
 # define TEXT_WHITE "\033[37m"
-# define TEXT_BRIGHT_BLACK "\033[30;1m"
-# define TEXT_BRIGHT_RED "\033[31;1m"
-# define TEXT_BRIGHT_GREEN "\033[32;1m"
-# define TEXT_BRIGHT_YELLOW "\033[33;1m"
-# define TEXT_BRIGHT_BLUE "\033[34;1m"
-# define TEXT_BRIGHT_MAGENTA "\033[35;1m"
-# define TEXT_BRIGHT_CYAN "\033[36;1m"
-# define TEXT_BRIGHT_WHITE "\033[37;1m"
+# define TEXT_BOLD_BLACK "\033[30;1m"
+# define TEXT_BOLD_RED "\033[31;1m"
+# define TEXT_BOLD_GREEN "\033[32;1m"
+# define TEXT_BOLD_YELLOW "\033[33;1m"
+# define TEXT_BOLD_BLUE "\033[34;1m"
+# define TEXT_BOLD_MAGENTA "\033[35;1m"
+# define TEXT_BOLD_CYAN "\033[36;1m"
+# define TEXT_BOLD_WHITE "\033[37;1m"
 # define TEXT_BG_BLACK "\033[40m"
 # define TEXT_BG_RED "\033[41m"
 # define TEXT_BG_GREEN "\033[42m"
@@ -48,13 +48,13 @@
 # define TEXT_BG_MAGENTA "\033[45m"
 # define TEXT_BG_CYAN "\033[46m"
 # define TEXT_BG_WHITE "\033[47m"
-# define TEXT_BG_BRIGHT_BLACK "\033[40;1m"
-# define TEXT_BG_BRIGHT_RED "\033[41;1m"
-# define TEXT_BG_BRIGHT_GREEN "\033[42;1m"
-# define TEXT_BG_BRIGHT_YELLOW "\033[43;1m"
-# define TEXT_BG_BRIGHT_BLUE "\033[44;1m"
-# define TEXT_BG_BRIGHT_MAGENTA "\033[45;1m"
-# define TEXT_BG_BRIGHT_CYAN "\033[46;1m"
-# define TEXT_BG_BRIGHT_WHITE "\033[47;1m"
+# define TEXT_BOLD_BG_BLACK "\033[40;1m"
+# define TEXT_BOLD_BG_RED "\033[41;1m"
+# define TEXT_BOLD_BG_GREEN "\033[42;1m"
+# define TEXT_BOLD_BG_YELLOW "\033[43;1m"
+# define TEXT_BOLD_BG_BLUE "\033[44;1m"
+# define TEXT_BOLD_BG_MAGENTA "\033[45;1m"
+# define TEXT_BOLD_BG_CYAN "\033[46;1m"
+# define TEXT_BOLD_BG_WHITE "\033[47;1m"
 
 #endif
