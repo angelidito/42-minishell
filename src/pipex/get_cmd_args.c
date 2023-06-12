@@ -103,8 +103,8 @@ char	**pipex_get_cmd_args(char const *cmd)
 	t_list	**arg_lst;
 	char	**arg_arr;
 
-	if (!ft_strchr(cmd, '\'') && !ft_strchr(cmd, '\"'))
-		return (ft_split_not_escaped(cmd, ' '));
+	// if (!ft_strchr(cmd, '\'') && !ft_strchr(cmd, '\"'))
+	// 	return (ft_split_not_escaped(cmd, ' '));
 	arg_lst = ft_calloc(sizeof(t_list *), 1);
 	if (!arg_lst)
 		return (NULL);

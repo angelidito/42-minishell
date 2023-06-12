@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 17:00:06 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:44:09 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse(char *str, t_list **env)
 	if (!cmd)
 	{
 		printf("malloc error\n");
-		return -1;
+		return (-1);
 	}
 	status = execute_cmd(cmd, env);
 	return (status);
@@ -39,7 +39,6 @@ int	prompt(t_list **env)
 	int		i;
 
 	str = readline("minishell> ");
-	parse(str, env);
 	i = -1;
 	while (str[++i])
 	{
@@ -51,6 +50,7 @@ int	prompt(t_list **env)
 	}
 	if (!ft_strcmp(str, "exit"))
 		return (1);
+	parse(str, env);
 	free(str);
 	return (0);
 }

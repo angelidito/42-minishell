@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 16:19:18 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:43:53 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ typedef struct s_cmd
 // ?
 typedef struct s_tree_node
 {
-	char				*data;
-	struct s_tree_node	*left;
-	struct s_tree_node	*right;
+	void				*content;
+	struct s_tree_node	**nodes;
 }						t_tree_node;
 
 #endif
