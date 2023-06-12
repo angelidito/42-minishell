@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+         #
+#    By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/11 16:49:16 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/12 16:38:18 by nucieda-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,15 @@ SRC				=	\
 					src/cmd.c \
 					src/env.c \
 					src/utils.c \
-					src/main.c
+					src/main.c \
+					src/built-ins/cd.c \
+					src/built-ins/echo.c \
+					src/built-ins/env.c \
+					src/built-ins/exit.c \
+					src/built-ins/export.c \
+					src/built-ins/pwd.c \
+					src/built-ins/unset.c \
+					src/built-ins/built-in.c
 					
 # src/pipex/ft_functions.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:21:15 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/11 16:52:12 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:27:27 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_cmd	*get_t_cmd(char *str, t_list **env)
 		return (cmd);
 	cmd->cmd = str;
 	cmd->args = pipex_get_cmd_args(str);
+	cmd->built_in = check_builtins(str);
 	cmd->file = get_cmd_file(*cmd->args, ft_split(my_getenv("PATH", env), ':'));
 	cmd->file_x_access = 1;
 	if (!cmd->file || access(cmd->file, X_OK) != 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:00:17 by angmarti          #+#    #+#             */
-/*   Updated: 2023/04/06 19:10:13 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:55:56 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static size_t	ft_findtrimpos(char const *s1, char const *set, int last)
 		last = 1;
 		i = ft_strlen(s1) - 1;
 	}
-	while ((s1[i] && !last) || (0 <= i && last))
+	while ((s1[i] && !last) || (last))
 	{
 		match = 0;
 		j = 0;
