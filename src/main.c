@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 14:58:29 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:35:23 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse(char *str, t_list **env)
 	if (!cmd)
 	{
 		printf("malloc error\n");
-		return -1;
+		return (-1);
 	}
 	status = execute_cmd(cmd, env);
 	return (status);
@@ -44,7 +44,6 @@ int	prompt(t_list **env)
 	int		i;
 
 	str = readline("minishell> ");
-	parse(str, env);
 	i = -1;
 	while (str[++i])
 	{
@@ -56,6 +55,7 @@ int	prompt(t_list **env)
 	}
 	if (!ft_strcmp(str, "exit"))
 		return (1);
+	parse(str, env);
 	free(str);
 	return (0);
 }

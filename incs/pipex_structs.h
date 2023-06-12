@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/05/18 21:29:26 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:41:00 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_vars
 	char	**envp;
 	char	**path;
 	int		here_doc;
+	int		output_flag;
 }			t_vars;
 
 #endif
