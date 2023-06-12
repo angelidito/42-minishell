@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:42:26 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:00:06 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	prompt(t_list **env)
 	free(str);
 	return (0);
 }
-/*
+
 int	main(int argc, char const *argv[], char **envp)
 {
 	int	exit;
@@ -71,22 +71,4 @@ int	main(int argc, char const *argv[], char **envp)
 	}
 	printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
 	return (0);
-}
-*/
-
-int main(int argc, char *argv[], char **envp)
-{
-	t_list **env;
-	t_cmd	*cmd;
-	env = get_env_lst(argc, (const char **)argv, envp);
-	if (!env)
-		return (1);
-
-	cmd = malloc(sizeof(t_cmd));
-	cmd->cmd = "echo hola hola hola";
-	cmd->args = ft_split(cmd->cmd, ' ');
-	cmd->built_in = 1;
-
-	ft_echo(cmd);
-	free(cmd);
 }
