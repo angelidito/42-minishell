@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/11 17:03:32 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:58:29 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // TODO: pipex_get_cmd_args gets properly the arguments, but not the command.
 // TODO: ft_split_not_escaped gets properly the command, but not the arguments.
 
-void	parse(char *str, t_list **env)
+int	parse(char *str, t_list **env)
 {
 	t_cmd	*cmd;
 	int		status;
@@ -26,9 +26,10 @@ void	parse(char *str, t_list **env)
 	if (!cmd)
 	{
 		printf("malloc error\n");
-		return ;
+		return -1;
 	}
 	status = execute_cmd(cmd, env);
+	return (status);
 	// printf("status: %d\n", status);
 }
 
