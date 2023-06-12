@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/11 16:07:07 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:41:36 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 # include <string.h>            // strerror
 # include <sys/stat.h>          // stat, lstat, fstat
 # include <sys/types.h>         // wait, waitpid, wait3, wait4, signal, getpid,
-								// getppid
+# include <sys/wait.h>			// getppid
+
 # include <termios.h>           // isatty, tcsetattr, tcgetattr
 # include <unistd.h>            // write, access, fork, execve, close, pipe,
 								// dup, dup2, getpid, getppid, getcwd, chdir
-
 // ENV
 
 char	*my_getenv(const char *name, t_list **env);
@@ -52,5 +52,14 @@ t_cmd	*get_t_cmd(char *str, t_list **env);
 char	**lst_to_arr(t_list **lst);
 void	print_stderr(char *str);
 void	put_str_fd_exit(char *s, int fd);
+
+// BUILT-INS
+
+int		check_builtins(char *str);
+void	ft_env(t_list **env);
+void    ft_pwd(t_list **env);
+void    ft_echo(t_cmd *cmd);
+
+
 
 #endif

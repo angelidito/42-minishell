@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 14:58:29 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:00:06 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ int	parse(char *str, t_list **env)
 	// printf("status: %d\n", status);
 }
 
-void	lst_print_content(void *content)
-{
-	ft_printf("%s\n", (char *)content);
-}
-
 int	prompt(t_list **env)
 {
 	char	*str;
@@ -59,6 +54,7 @@ int	prompt(t_list **env)
 	free(str);
 	return (0);
 }
+
 int	main(int argc, char const *argv[], char **envp)
 {
 	int	exit;

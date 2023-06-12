@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_structs.h                                :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 16:19:18 by nucieda-         ###   ########.fr       */
+/*   Created: 2023/06/12 15:21:28 by nucieda-          #+#    #+#             */
+/*   Updated: 2023/06/12 16:31:55 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_STRUCTS_H
-# define MINISHELL_STRUCTS_H
+#include "../../incs/minishell.h"
 
-// ? Completar si es necesario
-typedef struct s_cmd
+void    ft_pwd(t_list **env)
 {
-	char				*cmd;
-	char				**args;
-	char				*file;
-	int					file_x_access;
-	int					built_in;
-}						t_cmd;
+    char    *pwd;
 
-// ?
-typedef struct s_tree_node
-{
-	char				*data;
-	struct s_tree_node	*left;
-	struct s_tree_node	*right;
-}						t_tree_node;
-
-#endif
+    pwd = my_getenv("PWD", env);
+    printf("%s\n", pwd);
+}

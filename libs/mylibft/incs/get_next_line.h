@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:04:29 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/03 01:18:28 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:57:21 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>		/* BUFSIZ definition*/
 # include <stdlib.h>	/* Malloc & Free functions */
 # include <unistd.h> 	/* Write & Read functions */
+# include <stdint.h>
 // # include "libft.h"
 
 # ifndef BUFFER_SIZE
