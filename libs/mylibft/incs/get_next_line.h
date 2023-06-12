@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:04:29 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 16:02:03 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:57:21 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <fcntl.h> 	/* Open function */
 # include <limits.h>	/* Macro defined OPEN_MAX */
-# define OPEN_MAX 1000
 # include <stdio.h>		/* BUFSIZ definition*/
 # include <stdlib.h>	/* Malloc & Free functions */
 # include <unistd.h> 	/* Write & Read functions */
