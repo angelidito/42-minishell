@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/10 14:31:43 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:48:11 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 // BACKSLASHES
 
-void	remove_escapes(t_list **lst);
-char	*str_remove_escapes(char *str);
+// void	remove_escapes(t_list **lst);
+// char	*str_remove_escapes(char *str);
 
 //	CASE _N_ CMDS (BONUS)
 

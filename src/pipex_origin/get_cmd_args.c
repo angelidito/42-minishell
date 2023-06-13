@@ -109,7 +109,7 @@ char	**pipex_get_cmd_args(char const *cmd)
 	if (!arg_lst)
 		return (NULL);
 	set_arg_lst(cmd, arg_lst);
-	// remove_escapes(arg_lst);
+	remove_escapes(arg_lst);
 	arg_arr = pipex_lst_to_arr(arg_lst);
 	return (arg_arr);
 }

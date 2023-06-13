@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_structs.h                                    :+:      :+:    :+:   */
+/*   pipex_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 18:11:45 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 19:46:38 by angmarti         ###   ########.fr       */
+/*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
+/*   Updated: 2023/06/10 14:51:21 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_STRUCTS_H
-# define PIPEX_STRUCTS_H
+#include "../../incs/pipex.h"
 
-typedef struct s_vars
+int	main(int argc, char **argv, char **envp)
 {
-	char	*infile;
-	char	**cmds;
-	char	*outfile;
-	char	**envp;
-	t_list	**_envp;
-	char	**path;
-	int		here_doc;
-	int		output_flag;
-}			t_vars;
+	t_vars	vars;
 
-#endif
+	pipex_check_errors(argc, argv, envp, &vars);
+	set_vars(argc, argv, envp, &vars);
+	pipex_case_n_cmds(&vars, NULL, ft_strarrsize(vars.cmds));
+	return (0);
+}

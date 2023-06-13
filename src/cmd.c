@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:21:15 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/11 16:52:12 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:33:26 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_cmd_file(char *cmd, char **path)
 
 	if (!cmd)
 		return (NULL);
-	cmd = str_remove_escapes(cmd);
+	// cmd = str_remove_escapes(cmd);
 	if (cmd[0] == '/' || (cmd[0] == '.' && cmd[1] == '/'))
 	{
 		if (access(cmd, F_OK) == 0)

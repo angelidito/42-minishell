@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 18:56:14 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:56:58 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,6 @@ char	*pipex_find_file(char **words, char **path)
  * 
  * @return The path of the command.
  */
-/**
- * The function takes a command and a path, finds the corresponding executable file, and returns its
- * path.
- * 
- * @param cmd The command string that needs to be executed.
- * @param path The `path` parameter is a pointer to a null-terminated array of strings, where each
- * string represents a directory path. This array is used to search for the executable file specified
- * in the `cmd` parameter.
- * 
- * @return The function `pipex_get_cmd_file` returns a `char` pointer that points to the path of the
- * executable file corresponding to the command passed as an argument. If the command is a valid path
- * to an executable file, it returns the same path. If the command is not a valid path, it searches for
- * the executable file in the directories specified in the `path` array and returns the path
- */
 char	*pipex_get_cmd_file(char *cmd, char **path)
 {
 	char	**words;
@@ -62,7 +48,7 @@ char	*pipex_get_cmd_file(char *cmd, char **path)
 
 	if (!cmd)
 		return (NULL);
-	// cmd = str_remove_escapes(cmd);
+	cmd = str_remove_escapes(cmd);
 	if ((*cmd == '/' || (*cmd == '.' && cmd[1] == '/')) && access(cmd,
 			X_OK) == 0)
 		return ((char *)cmd);

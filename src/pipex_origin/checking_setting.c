@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:31:18 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 19:41:03 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:04:17 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars)
 	{
 		tmp = ft_strtrim(argv[i], " \t\v\f\r");
 		if (!tmp || !*tmp)
-			printf("Wrong arguments.");
+			pipex_pf_exit("Wrong arguments.", 1);
 		free(tmp);
 	}
 	if (argc < 5 + vars->here_doc)
@@ -107,8 +107,8 @@ void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars)
 		pipex_pf_exit(" cmd1 cmd2 [... cmdN] outfile", 1);
 	}
 	i = 0;
-	// while (envp && envp[i] && ft_strncmp(envp[i], "PATH=", 5))
-	// 	i++;
-	// if (!envp || !envp[i])
-	// 	exit(0);
+	while (envp && envp[i] && ft_strncmp(envp[i], "PATH=", 5))
+		i++;
+	if (!envp || !envp[i])
+		exit(0);
 }
