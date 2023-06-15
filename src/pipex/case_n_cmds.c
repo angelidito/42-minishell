@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 23:04:57 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 23:15:22 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	open_out(char *outfile, int flags, int mode, int pid)
 	}
 	return (fd_of);
 }
+t_cmd	*get_t_cmd(t_vars *vars, int cmd);
 /**
  * Executes the first command in the pipeline and redirects the input from the
  * input file. It also redirects the output to the pipe that connects it to the
@@ -80,11 +81,9 @@ void	n_child(t_vars *vars, int *pipe_fd)
 	int		fd_infile;
 	t_cmd	*command;
 
-	command = malloc(sizeof(t_cmd));
-	command->cmd = vars->cmds[0];
-	command->args = pipex_get_cmd_args(command->cmd);
-	vars->path = ft_split(my_getenv("PATH", vars->_envp), ':');
-	command->file = pipex_get_cmd_file(command->cmd, vars->path);
+	command = get_t_cmd(vars, 0);
+	if (!command)
+		pipex_pf_exit("Malloc error.", STDERR_FILENO);
 	pipex_check_cmd(command->cmd, command->file);
 	fd_infile = open_in(vars->infile, O_RDONLY);
 	dup2(fd_infile, STDIN_FILENO);
@@ -106,12 +105,9 @@ void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
 	t_cmd	*command;
 
-	command = malloc(sizeof(t_cmd));
-	command->cmd = vars->cmds[cmd];
-	command->args = pipex_get_cmd_args(command->cmd);
-	vars->path = ft_split(my_getenv("PATH", vars->_envp), ':');
-	command->file = pipex_get_cmd_file(command->cmd, vars->path);
-	// printf("File: %s\n", command.file);
+	command = get_t_cmd(vars, cmd);
+	if (!command)
+		pipex_pf_exit("Malloc error.", STDERR_FILENO);
 	pipex_check_cmd(command->cmd, command->file);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);

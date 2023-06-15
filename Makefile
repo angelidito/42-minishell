@@ -6,7 +6,7 @@
 #    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/14 23:37:34 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/15 23:09:26 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ NAME_PIPEX		=	pipex
 SRC				=	\
 					src/pipex/case_n_cmds.c \
 					src/pipex/checking_setting.c \
+					src/pipex/cmd.c \
 					src/pipex/errors.c \
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
 					src/pipex/here_doc.c \
 					src/pipex/pipex.c \
-					src/cmd.c \
 					src/env.c \
 					src/utils.c \
 					src/main.c
@@ -43,6 +43,7 @@ OBJS				=	$(SRC:.c=.o)
 SRC_PIPEX		=	\
 					src/pipex/case_n_cmds.c \
 					src/pipex/checking_setting.c \
+					src/pipex/cmd.c \
 					src/pipex/errors.c \
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
