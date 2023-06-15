@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:31:18 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/14 23:35:40 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:39:09 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	pipex_check_cmd(char *cmd, char *file)
 		pipex_print_stderr(cmd);
 		pipex_print_stderr("\n");
 	}
-	free(file);
 }
