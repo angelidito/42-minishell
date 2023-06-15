@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 17:05:49 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:36:44 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int argc, char const **argv, char **envp)
 {
 	t_vars vars;
-	char *cmds[] = {"man cat", "cat -e", NULL};
+	char *cmds[] = {"ls", "cat -e", NULL};
 	vars.cmds = cmds;
 	vars.infile = NULL;
 	vars.outfile = NULL;

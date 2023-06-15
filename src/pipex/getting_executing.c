@@ -6,34 +6,33 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 17:01:13 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:46:21 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
 
-char	*pipex_find_file(char **words, t_vars *vars)
+char	*pipex_find_file(char **words, char **path)
 {
 	char	*file;
 	int		i;
 	char	*aux;
-	char	**path;
 	int		path_size;
 
 	i = -1;
-	path = ft_split(my_getenv("PATH", vars->_envp), ':');
-	// TODO: my_getenv hace leak siempre al juntar con split
 	path_size = ft_strarrsize(path);
+	file = NULL;
 	while (++i < path_size)
 	{
 		aux = ft_strjoin("/", words[0]);
 		file = ft_strjoin(path[i], aux);
 		free(aux);
-		if (access(file, X_OK) == 0)
+		// TODO: comprobar también si existe el archivo (F_OK)
+		if (access(file, X_OK) == 0) 
 			break ;
 		free(file);
+		file = NULL;
 	}
-	ft_freestrarr(path);
 	return (file);
 }
 
@@ -41,11 +40,11 @@ char	*pipex_find_file(char **words, t_vars *vars)
  * It takes a command and a path, and returns the path to the command
  * 
  * @param cmd the command to be executed
- * @param vars Variables of the program
+ * @param path the path variable
  * 
  * @return The path of the command.
  */
-char	*pipex_get_cmd_file(char *cmd, t_vars *vars)
+char	*pipex_get_cmd_file(char *cmd, char **path)
 {
 	char	**words;
 	char	*file;
@@ -57,7 +56,7 @@ char	*pipex_get_cmd_file(char *cmd, t_vars *vars)
 			X_OK) == 0)
 		return ((char *)cmd);
 	words = ft_split(cmd, ' ');
-	file = pipex_find_file(words, vars);
+	file = pipex_find_file(words, path);
 	ft_freestrarr(words);
 	return (file);
 }

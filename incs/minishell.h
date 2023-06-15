@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 01:29:25 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/11 16:07:07 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:43:58 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_list	**get_env_lst(int argc, char const *argv[], char **envp);
 
 int		execute_cmd(t_cmd *cmd, t_list **env);
 
-t_cmd	*get_t_cmd(char *str, t_list **env);
+// t_cmd	*get_t_cmd(t_vars *vars, int cmd);
 
 // UTILS
 

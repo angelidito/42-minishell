@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/14 23:33:10 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:38:04 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands);
 
 //	CHECKING_SETTING (BONUS)
 
-void	pipex_check_cmd(char *cmd, char	*file);
+void	pipex_check_cmd(char *cmd, char *file);
 void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars);
 void	set_vars(int argc, char **argv, char **envp, t_vars *vars);
 
@@ -52,7 +52,7 @@ char	**pipex_get_cmd_args(char const *cmd);
 //	GETTING_EXECUTING
 
 void	pipex_exec_cmd(t_cmd *cmd, char *envp[]);
-char	*pipex_get_cmd_file(char *cmd, t_vars *vars);
+char	*pipex_get_cmd_file(char *cmd, char **path);
 char	**pipex_get_path(char *envp[]);
 
 // HERE_DOC
@@ -62,6 +62,6 @@ void	heredoc(char *limiter);
 
 //	PIPEX
 
-int	pipex(t_vars *vars);
+int		pipex(t_vars *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 16:49:17 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 23:04:57 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,19 @@ int	open_out(char *outfile, int flags, int mode, int pid)
 void	n_child(t_vars *vars, int *pipe_fd)
 {
 	int		fd_infile;
-	t_cmd	command;
-	char	**path;
+	t_cmd	*command;
 
-	command.cmd = vars->cmds[0];
-	command.args = pipex_get_cmd_args(command.cmd);
-	path = ft_split(my_getenv("PATH", vars->_envp), ' ');
-	command.file = pipex_get_cmd_file(command.cmd, vars);
-	free(path);
-	pipex_check_cmd(command.cmd, command.file);
+	command = malloc(sizeof(t_cmd));
+	command->cmd = vars->cmds[0];
+	command->args = pipex_get_cmd_args(command->cmd);
+	vars->path = ft_split(my_getenv("PATH", vars->_envp), ':');
+	command->file = pipex_get_cmd_file(command->cmd, vars->path);
+	pipex_check_cmd(command->cmd, command->file);
 	fd_infile = open_in(vars->infile, O_RDONLY);
 	dup2(fd_infile, STDIN_FILENO);
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
-	pipex_exec_cmd(&command, lst_to_arr(vars->_envp));
+	pipex_exec_cmd(command, lst_to_arr(vars->_envp));
 }
 
 /**
@@ -105,19 +104,19 @@ void	n_child(t_vars *vars, int *pipe_fd)
  */
 void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
-	t_cmd	command;
-	char	**path;
+	t_cmd	*command;
 
-	command.cmd = vars->cmds[cmd];
-	command.args = pipex_get_cmd_args(command.cmd);
-	path = ft_split(my_getenv("PATH", vars->_envp), ' ');
-	command.file = pipex_get_cmd_file(command.cmd, vars);
-	free(path);
-	pipex_check_cmd(command.cmd, command.file);
+	command = malloc(sizeof(t_cmd));
+	command->cmd = vars->cmds[cmd];
+	command->args = pipex_get_cmd_args(command->cmd);
+	vars->path = ft_split(my_getenv("PATH", vars->_envp), ':');
+	command->file = pipex_get_cmd_file(command->cmd, vars->path);
+	// printf("File: %s\n", command.file);
+	pipex_check_cmd(command->cmd, command->file);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
 	close(pipe_fd[1]);
-	pipex_exec_cmd(&command, lst_to_arr(vars->_envp));
+	pipex_exec_cmd(command, lst_to_arr(vars->_envp));
 }
 /**
  * It executes the commands in the pipeline and redirects the output to the
