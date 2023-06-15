@@ -6,68 +6,12 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 23:15:22 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 23:53:56 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
 
-/**
- * It opens the input file and returns the file descriptor
- *
- * @param infile the name of the file to open
- * @param flags O_RDONLY, O_RDWR
- *
- * @return The file descriptor of the input file.
- */
-int	open_in(char *infile, int flags)
-{
-	int	fd_infile;
-
-	if (!infile)
-		return (STDIN_FILENO);
-	fd_infile = open(infile, flags);
-	if (fd_infile == -1 && access(infile, F_OK) == -1)
-	{
-		pipex_print_stderr("pipex: ");
-		pipex_print_stderr(infile);
-		pipex_pf_exit(": No such file or directory", STDERR_FILENO);
-	}
-	if (fd_infile == -1)
-	{
-		pipex_print_stderr("pipex: permission denied: ");
-		pipex_pf_exit(infile, STDERR_FILENO);
-	}
-	return (fd_infile);
-}
-
-/**
- * It opens the output file and returns the file descriptor
- *
- * @param outfile the name of the file to open
- * @param flags O_WRONLY, O_CREAT, O_TRUNC, O_APPEND
- * @param mode The mode is specified in octal, and is the same as the mode
- * argument to open(2).
- *
- * @return The file descriptor of the output file.
- */
-int	open_out(char *outfile, int flags, int mode, int pid)
-{
-	int	fd_of;
-
-	if (!outfile)
-		return (STDOUT_FILENO);
-	fd_of = open(outfile, flags, mode);
-	if (fd_of == -1)
-	{
-		if (pid)
-			exit(EXIT_FAILURE);
-		pipex_print_stderr("pipex: permission denied: ");
-		pipex_pf_exit(outfile, STDERR_FILENO);
-	}
-	return (fd_of);
-}
-t_cmd	*get_t_cmd(t_vars *vars, int cmd);
 /**
  * Executes the first command in the pipeline and redirects the input from the
  * input file. It also redirects the output to the pipe that connects it to the
@@ -78,15 +22,15 @@ t_cmd	*get_t_cmd(t_vars *vars, int cmd);
  */
 void	n_child(t_vars *vars, int *pipe_fd)
 {
-	int		fd_infile;
+	int		fd_in;
 	t_cmd	*command;
 
 	command = get_t_cmd(vars, 0);
 	if (!command)
 		pipex_pf_exit("Malloc error.", STDERR_FILENO);
 	pipex_check_cmd(command->cmd, command->file);
-	fd_infile = open_in(vars->infile, O_RDONLY);
-	dup2(fd_infile, STDIN_FILENO);
+	fd_in = open_in(vars->infile, O_RDONLY);
+	dup2(fd_in, STDIN_FILENO);
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
 	pipex_exec_cmd(command, lst_to_arr(vars->_envp));
@@ -130,7 +74,7 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
-	int		fd_of;
+	int		fd_out;
 
 	if (n_comands == 1)
 	{
@@ -143,12 +87,12 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 	if (pid == -1)
 		pipex_my_perror("\033[1;31mError while forking.");
 	else if (!prev_fd)
-		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | vars->output_flag,
-				0644, pid);
+		fd_out = open_out(vars->outfile,
+				O_CREAT | O_RDWR | vars->output_flag, 0644, pid);
 	else
-		fd_of = prev_fd[1];
+		fd_out = prev_fd[1];
 	if (pid == 0)
 		pipex_case_n_cmds(vars, pipe_fd, n_comands - 1);
 	else
-		n_parent(vars, pipe_fd, fd_of, n_comands - 1);
+		n_parent(vars, pipe_fd, fd_out, n_comands - 1);
 }

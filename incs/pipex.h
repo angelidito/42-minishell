@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/15 17:38:04 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/16 01:08:31 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,20 @@
 // void	remove_escapes(t_list **lst);
 // char	*str_remove_escapes(char *str);
 
-//	CASE _N_ CMDS (BONUS)
+//	CASE _N_ CMDS
 
+void	pipex_case_1_cmd(t_vars *vars);
 void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands);
 
-//	CHECKING_SETTING (BONUS)
+//	CHECKING_SETTING
 
 void	pipex_check_cmd(char *cmd, char *file);
 void	pipex_check_errors(int argc, char **argv, char **envp, t_vars *vars);
 void	set_vars(int argc, char **argv, char **envp, t_vars *vars);
+
+// CMD
+
+t_cmd	*get_t_cmd(t_vars *vars, int cmd);
 
 //	ERRORS
 
@@ -60,8 +65,13 @@ char	**pipex_get_path(char *envp[]);
 void	pipex_heredoc(char *limiter, int n_comands);
 void	heredoc(char *limiter);
 
+// OPEN
+
+int		open_in(char *infile, int flags);
+int		open_out(char *outfile, int flags, int mode, int pid);
+
 //	PIPEX
 
-int		pipex(t_vars *vars);
+int		execute(t_vars *vars);
 
 #endif
