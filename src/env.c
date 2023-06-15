@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:30:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/10 14:35:08 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:41:08 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/minishell.h"
-
-
 
 /**
  * Obtains the current value of the environment variable required.
@@ -52,9 +50,11 @@ char	*my_getenv(const char *name, t_list **env)
  * ? variables should be the same that in the parent process, not the
  * ? environment vars of the terminal where the fist minishell was executed.
  *
- * @param argc 
- * @param argv
- * @param envp
+ * @param argc Number of arguments passed to the minishell. It should be 1 if it
+ * was called from the terminal,
+ * and more if it was called from another minishell.
+ * @param argv If argc >= 2, argv is used as the list of environment variables.
+ * @param envp If argc == 1, envp is used as the list of environment variables.
  *
  * @return List of environment variables.
  */
@@ -67,7 +67,7 @@ t_list	**get_env_lst(int argc, char const *argv[], char **envp)
 	env = ft_calloc(1, sizeof(t_list *));
 	if (!env)
 		return (NULL);
-	if (argc > 1)
+	if (argc >= 2)
 		aux = (char **)argv;
 	else
 		aux = envp;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   case_n_cmds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 18:30:51 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:13:50 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	open_in(char *infile, int flags)
 	fd_infile = open(infile, flags);
 	if (fd_infile == -1 && access(infile, F_OK) == -1)
 	{
-		pipex_print_stderr("pipex: ");
-		pipex_print_stderr(infile);
-		pipex_pf_exit(": No such file or directory", STDERR_FILENO);
+		p_____print_stderr("pipex: ");
+		p_____print_stderr(infile);
+		p_____pf_exit(": No such file or directory", STDERR_FILENO);
 	}
 	if (fd_infile == -1)
 	{
-		pipex_print_stderr("pipex: permission denied: ");
-		pipex_pf_exit(infile, STDERR_FILENO);
+		p_____print_stderr("pipex: permission denied: ");
+		p_____pf_exit(infile, STDERR_FILENO);
 	}
 	return (fd_infile);
 }
@@ -58,8 +58,8 @@ int	open_out(char *outfile, int flags, int mode, int pid)
 	{
 		if (pid)
 			exit(EXIT_FAILURE);
-		pipex_print_stderr("pipex: permission denied: ");
-		pipex_pf_exit(outfile, STDERR_FILENO);
+		p_____print_stderr("pipex: permission denied: ");
+		p_____pf_exit(outfile, STDERR_FILENO);
 	}
 	return (fd_of);
 }
@@ -75,12 +75,12 @@ void	n_child(t_vars *vars, int *pipe_fd)
 {
 	int	fd_infile;
 
-	pipex_check_cmd(vars->cmds[0], vars->path);
+	p_____check_cmd(vars->cmds[0], vars->path);
 	fd_infile = open_in(vars->infile, O_RDONLY);
 	dup2(fd_infile, STDIN_FILENO);
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
-	pipex_exec_cmd(vars->cmds[0], vars->path, vars->envp);
+	p_____exec_cmd(vars->cmds[0], vars->path, vars->envp);
 }
 
 /**
@@ -94,11 +94,11 @@ void	n_child(t_vars *vars, int *pipe_fd)
  */
 void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
-	pipex_check_cmd(vars->cmds[cmd], vars->path);
+	p_____check_cmd(vars->cmds[cmd], vars->path);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
 	close(pipe_fd[1]);
-	pipex_exec_cmd(vars->cmds[cmd], vars->path, vars->envp);
+	p_____exec_cmd(vars->cmds[cmd], vars->path, vars->envp);
 }
 /**
  * It executes the commands in the pipeline and redirects the output to the
@@ -112,7 +112,7 @@ void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
  * first command.
  * @param n_comands Number of commands in the pipeline.
  */
-void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
+void	p_____case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
@@ -124,10 +124,10 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 		return ;
 	}
 	if (pipe(pipe_fd) == -1)
-		pipex_my_perror("\033[1;31mPipe error: ");
+		p_____my_perror("\033[1;31mPipe error: ");
 	pid = fork();
 	if (pid == -1)
-		pipex_my_perror("\033[1;31mError while forking.");
+		p_____my_perror("\033[1;31mError while forking.");
 	if (!prev_fd && vars->here_doc == 1)
 		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | O_APPEND, 0644, pid);
 	else if (!prev_fd)
@@ -139,7 +139,7 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 	else
 		fd_of = prev_fd[1];
 	if (pid == 0)
-		pipex_case_n_cmds(vars, pipe_fd, n_comands - 1);
+		p_____case_n_cmds(vars, pipe_fd, n_comands - 1);
 	else
 		n_parent(vars, pipe_fd, fd_of, n_comands - 1);
 }

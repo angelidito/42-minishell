@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+         #
+#    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/11 16:49:16 by angmarti         ###   ########.fr        #
+#    Updated: 2023/06/14 23:37:34 by angmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,13 @@ NAME_PIPEX		=	pipex
 
 # ****************************     MINISHELL     ***************************** #
 SRC				=	\
-					src/pipex/backslashes.c \
 					src/pipex/case_n_cmds.c \
 					src/pipex/checking_setting.c \
 					src/pipex/errors.c \
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
 					src/pipex/here_doc.c \
+					src/pipex/pipex.c \
 					src/cmd.c \
 					src/env.c \
 					src/utils.c \
@@ -41,6 +41,18 @@ OBJS				=	$(SRC:.c=.o)
 
 # ****************************       PIPEX       ***************************** #
 SRC_PIPEX		=	\
+					src/pipex/case_n_cmds.c \
+					src/pipex/checking_setting.c \
+					src/pipex/errors.c \
+					src/pipex/get_cmd_args.c \
+					src/pipex/getting_executing.c \
+					src/pipex/here_doc.c \
+					src/pipex/pipex.c \
+					src/env.c \
+					src/utils.c \
+					src/pipex/pipex_main.c
+					
+OLD_SRC_PIPEX	=	\
 					src/pipex/backslashes.c \
 					src/pipex/case_n_cmds.c \
 					src/pipex/checking_setting.c \
@@ -124,14 +136,14 @@ clean:
 	@echo
 	@${MAKES_CLEAN}
 	@echo "$(GREEN)$(NAME):$(NOCOLOR) [$(RED)Removing $(BLUE)*.o$(NOCOLOR)]"
-	$(RM) $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) $(OBJS_PIPEX)
 	@echo
 
 fclean:
 	@echo
 	@${MAKES_FCLEAN}
 	@echo "$(GREEN)$(NAME):$(NOCOLOR) [$(RED)Removing $(BLUE)*.o$(NOCOLOR)]"
-	$(RM) $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) $(OBJS_PIPEX)
 	@echo "$(GREEN)$(NAME):$(NOCOLOR) [$(RED)Removing $(BLUE)$(NAME)$(NOCOLOR)]$(RED)"
 	$(RM) $(NAME) $(NAME_PIPEX)
 	@echo

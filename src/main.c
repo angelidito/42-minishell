@@ -3,25 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 17:35:23 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:40:19 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/minishell.h"
 
-// test with: ./script\ of\ four\ words arg1 "arg number 2" ' arg #3'  " arg 'number 4' this is \"bad\" ..."
-// TODO: pipex_get_cmd_args gets properly the arguments, but not the command.
-// TODO: ft_split_not_escaped gets properly the command, but not the arguments.
-
+// test with: ./"script of four words" arg1 "arg number 2" ' arg #3'  " arg 'number 4' this is \"bad\" ..."
 int	parse(char *str, t_list **env)
 {
 	t_cmd	*cmd;
 	int		status;
 
-	// printf("Parsing: %s\n", str);
 	cmd = get_t_cmd(str, env);
 	if (!cmd)
 	{
@@ -30,7 +26,6 @@ int	parse(char *str, t_list **env)
 	}
 	status = execute_cmd(cmd, env);
 	return (status);
-	// printf("status: %d\n", status);
 }
 
 void	lst_print_content(void *content)
@@ -43,7 +38,7 @@ int	prompt(t_list **env)
 	char	*str;
 	int		i;
 
-	str = readline("minishell> ");
+	str = readline("(>'-')> ");
 	i = -1;
 	while (str[++i])
 	{
@@ -59,6 +54,18 @@ int	prompt(t_list **env)
 	free(str);
 	return (0);
 }
+/**
+ * Creates a Minishell.
+ * 
+ * @param argc Number of arguments passed to the minishell. It should be:
+ * one (1), if it was called from the terminal;
+ * and more, if it was called from another minishell.
+ * @param argv If argc >= 2, argv is used as the list of environment variables.
+ * @param envp If argc == 1, envp is used as the list of environment variables.
+ * 
+ * @return The main function is returning an integer value, which is 0 if the program runs successfully
+ * and 1 if there is an error.
+ */
 int	main(int argc, char const *argv[], char **envp)
 {
 	int	exit;

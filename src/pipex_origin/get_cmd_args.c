@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_get_cmd_args.c                                     :+:      :+:    :+:   */
+/*   p_____get_cmd_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -68,7 +68,7 @@ void	set_arg_lst(char const *cmd, t_list **arg_lst)
 		ft_lstadd_back(arg_lst, ft_lstnew(ft_substr(cmd, i, len)));
 }
 
-char	**pipex_lst_to_arr(t_list **lst)
+char	**p_____lst_to_arr(t_list **lst)
 {
 	char	**arr;
 	t_list	*node;
@@ -98,18 +98,18 @@ char	**pipex_lst_to_arr(t_list **lst)
  * 
  * @return An array of strings, each one being an argument of the command.
  */
-char	**pipex_get_cmd_args(char const *cmd)
+char	**p_____get_cmd_args(char const *cmd)
 {
 	t_list	**arg_lst;
 	char	**arg_arr;
 
-	// if (!ft_strchr(cmd, '\'') && !ft_strchr(cmd, '\"'))
-	// 	return (ft_split_not_escaped(cmd, ' '));
+	if (!ft_strchr(cmd, '\'') && !ft_strchr(cmd, '\"'))
+		return (ft_split(cmd, ' '));
 	arg_lst = ft_calloc(sizeof(t_list *), 1);
 	if (!arg_lst)
 		return (NULL);
 	set_arg_lst(cmd, arg_lst);
 	remove_escapes(arg_lst);
-	arg_arr = pipex_lst_to_arr(arg_lst);
+	arg_arr = p_____lst_to_arr(arg_lst);
 	return (arg_arr);
 }

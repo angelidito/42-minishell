@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   case_n_cmds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/12 18:30:51 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:49:17 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	open_in(char *infile, int flags)
 {
 	int	fd_infile;
 
+	if (!infile)
+		return (STDIN_FILENO);
 	fd_infile = open(infile, flags);
 	if (fd_infile == -1 && access(infile, F_OK) == -1)
 	{
@@ -53,6 +55,8 @@ int	open_out(char *outfile, int flags, int mode, int pid)
 {
 	int	fd_of;
 
+	if (!outfile)
+		return (STDOUT_FILENO);
 	fd_of = open(outfile, flags, mode);
 	if (fd_of == -1)
 	{
@@ -73,14 +77,21 @@ int	open_out(char *outfile, int flags, int mode, int pid)
  */
 void	n_child(t_vars *vars, int *pipe_fd)
 {
-	int	fd_infile;
+	int		fd_infile;
+	t_cmd	command;
+	char	**path;
 
-	pipex_check_cmd(vars->cmds[0], vars->path);
+	command.cmd = vars->cmds[0];
+	command.args = pipex_get_cmd_args(command.cmd);
+	path = ft_split(my_getenv("PATH", vars->_envp), ' ');
+	command.file = pipex_get_cmd_file(command.cmd, vars);
+	free(path);
+	pipex_check_cmd(command.cmd, command.file);
 	fd_infile = open_in(vars->infile, O_RDONLY);
 	dup2(fd_infile, STDIN_FILENO);
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
-	pipex_exec_cmd(vars->cmds[0], vars->path, vars->envp);
+	pipex_exec_cmd(&command, lst_to_arr(vars->_envp));
 }
 
 /**
@@ -94,11 +105,19 @@ void	n_child(t_vars *vars, int *pipe_fd)
  */
 void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
-	pipex_check_cmd(vars->cmds[cmd], vars->path);
+	t_cmd	command;
+	char	**path;
+
+	command.cmd = vars->cmds[cmd];
+	command.args = pipex_get_cmd_args(command.cmd);
+	path = ft_split(my_getenv("PATH", vars->_envp), ' ');
+	command.file = pipex_get_cmd_file(command.cmd, vars);
+	free(path);
+	pipex_check_cmd(command.cmd, command.file);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
 	close(pipe_fd[1]);
-	pipex_exec_cmd(vars->cmds[cmd], vars->path, vars->envp);
+	pipex_exec_cmd(&command, lst_to_arr(vars->_envp));
 }
 /**
  * It executes the commands in the pipeline and redirects the output to the
@@ -128,14 +147,9 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 	pid = fork();
 	if (pid == -1)
 		pipex_my_perror("\033[1;31mError while forking.");
-	if (!prev_fd && vars->here_doc == 1)
-		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | O_APPEND, 0644, pid);
 	else if (!prev_fd)
-		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | O_TRUNC, 0644, pid);
-	// else if (!prev_fd)
-	// 	fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | vars->flag, 0644,
-			// pid);
-	// vars->flag = O_TRUNC;
+		fd_of = open_out(vars->outfile, O_CREAT | O_RDWR | vars->output_flag,
+				0644, pid);
 	else
 		fd_of = prev_fd[1];
 	if (pid == 0)

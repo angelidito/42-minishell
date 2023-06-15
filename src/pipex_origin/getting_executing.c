@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   getting_executing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:44:42 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/10 14:56:58 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:13:50 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/pipex.h"
 
-char	*pipex_find_file(char **words, char **path)
+char	*p_____find_file(char **words, char **path)
 {
 	char	*file;
 	int		i;
@@ -41,7 +41,7 @@ char	*pipex_find_file(char **words, char **path)
  * 
  * @return The path of the command.
  */
-char	*pipex_get_cmd_file(char *cmd, char **path)
+char	*p_____get_cmd_file(char *cmd, char **path)
 {
 	char	**words;
 	char	*file;
@@ -53,7 +53,7 @@ char	*pipex_get_cmd_file(char *cmd, char **path)
 			X_OK) == 0)
 		return ((char *)cmd);
 	words = ft_split_not_escaped(cmd, ' ');
-	file = pipex_find_file(words, path);
+	file = p_____find_file(words, path);
 	free(cmd);
 	ft_freestrarr(words);
 	return (file);
@@ -67,7 +67,7 @@ char	*pipex_get_cmd_file(char *cmd, char **path)
  * 
  * @return the path of the environment variable.
  */
-char	**pipex_get_path(char *envp[])
+char	**p_____get_path(char *envp[])
 {
 	int	i;
 
@@ -87,13 +87,13 @@ char	**pipex_get_path(char *envp[])
  * 
  * @return The array of arguments.
  */
-void	pipex_exec_cmd(char *cmd, char **path, char *envp[])
+void	p_____exec_cmd(char *cmd, char **path, char *envp[])
 {
 	char	**args;
 	char	*file;
 
-	args = pipex_get_cmd_args(cmd);
-	file = pipex_get_cmd_file(cmd, path);
+	args = p_____get_cmd_args(cmd);
+	file = p_____get_cmd_file(cmd, path);
 	execve(file, args, envp);
 	exit(127);
 }
