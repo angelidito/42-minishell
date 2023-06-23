@@ -6,7 +6,7 @@
 /*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/23 09:38:37 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/06/23 09:49:16 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	prompt(t_list **env)
 	free(str);
 	return (0);
 }
-/*
+
 int	main(int argc, char const *argv[], char **envp)
 {
 	int	exit;
@@ -69,34 +69,6 @@ int	main(int argc, char const *argv[], char **envp)
 	{
 		exit = prompt(env);
 	}
-	printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
-	return (0);
-}
-*/
-int	main(int argc, char const *argv[], char **envp)
-{
-	int			exit;
-	t_mini_vars	*vars;
-	t_list 		**env; // ? should this be a global variable? | Nah
-	char		*str;
-	
-	env = get_env_lst(argc, argv, envp);
-	if (!env)
-		return (1);
-	// ft_lstiter(*env, lst_print_content);
-	while (1)
-	{
-		str = readline("Minishell> ");
-		vars = get_t_vars(str, env);
-		for (int i = 0; vars->cmds[i]; i++)
-			printf("%s | ");
-		printf("\n");
-		printf("infile: %s\n", vars->infile);
-		printf("outfile: %s\n", vars->outfile);
-		printf("heredoc: %d\n", vars->here_doc);
-		printf("\n");
-	}
-	
 	printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
 	return (0);
 }
