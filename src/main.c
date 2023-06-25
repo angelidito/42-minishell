@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 18:44:09 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/23 09:49:16 by nucieda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 int	parse(char *str, t_list **env)
 {
-	t_cmd	*cmd;
+	t_vars	*vars;
 	int		status;
 
 	// printf("Parsing: %s\n", str);
-	cmd = get_t_cmd(str, env);
-	if (!cmd)
+	vars = get_t_vars(str, env);
+	if (!vars)
 	{
 		printf("malloc error\n");
 		return (-1);
 	}
-	status = execute_cmd(cmd, env);
+	status = execute_cmd(vars, env);
 	return (status);
 	// printf("status: %d\n", status);
 }
