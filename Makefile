@@ -1,16 +1,4 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/17 12:03:08 by angmarti          #+#    #+#              #
-#    Updated: 2023/06/16 01:10:09 by angmarti         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
 # *****************************   PROJECT NAME   ***************************** #
 # **************************************************************************** #
 
@@ -35,7 +23,15 @@ SRC				=	\
 					src/pipex/pipex.c \
 					src/env.c \
 					src/utils.c \
-					src/main.c
+					src/main.c \
+					src/built-ins/cd.c \
+					src/built-ins/echo.c \
+					src/built-ins/env.c \
+					src/built-ins/exit.c \
+					src/built-ins/export.c \
+					src/built-ins/pwd.c \
+					src/built-ins/unset.c \
+					src/built-ins/built-in.c
 					
 # src/pipex/ft_functions.c
 

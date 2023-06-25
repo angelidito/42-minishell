@@ -1,36 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 21:44:32 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/14 22:40:19 by angmarti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../incs/minishell.h"
 
 // test with: ./"script of four words" arg1 "arg number 2" ' arg #3'  " arg 'number 4' this is \"bad\" ..."
 int	parse(char *str, t_list **env)
 {
-	t_cmd	*cmd;
+	t_vars	*vars;
 	int		status;
 
-	cmd = get_t_cmd(str, env);
-	if (!cmd)
+	// printf("Parsing: %s\n", str);
+	vars = get_t_vars(str, env);
+	if (!vars)
 	{
 		printf("malloc error\n");
 		return (-1);
 	}
-	status = execute_cmd(cmd, env);
+	status = execute_cmd(vars, env);
 	return (status);
-}
-
-void	lst_print_content(void *content)
-{
-	ft_printf("%s\n", (char *)content);
 }
 
 int	prompt(t_list **env)
