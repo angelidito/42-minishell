@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 20:43:05 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:17:08 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ pid_t	get_pid(int builtin)
 
 	if (!builtin)
 	{
-		printf("fork\n");
+		printf("fork \n");
 		pid = fork();
 	}
 	else
 	{
-		printf("no fork\n");
+		printf("no fork \n");
 		pid = 0;
 	}
 	if (pid == -1)
@@ -88,6 +88,8 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 		n_child_builtin(vars, prev_fd);
 	else if (builtin && n_comands > 1)
 		n_parent_builtin(vars, pipe_fd, fd_out, n_comands - 1);
+	else if (n_comands < 1)
+		pipex_pf_exit("n_comands < 1", STDERR_FILENO);
 	else if (pid == 0 && n_comands == 1)
 		n_child(vars, prev_fd);
 	else if (pid == 0 && n_comands > 1)
