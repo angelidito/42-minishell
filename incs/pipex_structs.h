@@ -16,6 +16,7 @@ typedef struct s_vars
 	char	*here_doc_lim;
 	char	**here_doc_limiters;
 	int		output_flag;
+	int		cmds_left;
 }			t_vars;
 
 #endif

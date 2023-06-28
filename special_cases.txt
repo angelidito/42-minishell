@@ -1,1 +1,8 @@
 < hola.txt | cat
+
+Esto:
+echo "hola que tal": muy bien, y tu:
+Debería sacar
+echo hola que tal: muy bien, y tu:
+Pero saca
+echo hola que tal : muy bien, y tu:

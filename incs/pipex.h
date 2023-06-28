@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/26 18:59:42 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:42:48 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 
 void	pipex_case_1_cmd(t_vars *vars);
 void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands);
+void	n_child(t_vars *vars, int *pipe_fd);
+void	n_child_builtin(t_vars *vars, int *pipe_fd);
+void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd);
+void	n_parent_builtin(t_vars *vars, int *pipe_fd, int fd_out, int cmd);
 
 //	CHECKING_SETTING
 
@@ -75,6 +79,6 @@ int		open_out(char *outfile, int flags, int mode, int pid);
 //	PIPEX
 
 int		is_builtin(t_vars *vars, int n);
-void	exec_builtin(t_vars *vars, int n);
+void	exec_builtin(t_vars *vars, int cmd);
 
 #endif

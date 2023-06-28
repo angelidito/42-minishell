@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 18:32:08 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:51:17 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ int	main(int argc, char const **argv, char **envp)
 {
 	t_vars	vars;
 	char	**cmds;
-
-	cmds = ft_calloc(4, sizeof(char *));
-	cmds[0] = ft_strdup("echo hola ");
-	cmds[1] = ft_strdup("env ");
-	cmds[2] = ft_strdup("pwd");
-	cmds[3] = NULL;
+	int i =0;
+	cmds = ft_calloc(55, sizeof(char *));
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("echo hola que tal? muy bien, y tu?");
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = 0;
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = NULL;
 	// char *cmds[] = {/* "echo hola",  */ft_strdup("wc"), ft_strdup("cat -e"), NULL}; //
 	vars.cmds = cmds;
 	vars.infile = "README.md";
