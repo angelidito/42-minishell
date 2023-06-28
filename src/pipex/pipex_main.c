@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 21:23:16 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:46:37 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,24 @@ int	main(int argc, char const **argv, char **envp)
 	char	**cmds;
 	int i =0;
 	cmds = ft_calloc(55, sizeof(char *));
+	cmds[i++] = ft_strdup("env");
+	cmds[i++] = ft_strdup("cat ");
+	cmds[i++] = ft_strdup("cat -b");
+	cmds[i++] = ft_strdup("cat ");
+	cmds[i++] = ft_strdup("cat ");
+	cmds[i++] = ft_strdup("cat ");
 	cmds[i++] = ft_strdup("cat -e");
-	cmds[i++] = ft_strdup("cat -e");
-	cmds[i++] = ft_strdup("cat -e");
-	cmds[i++] = ft_strdup("cat -e");
-	cmds[i++] = ft_strdup("cat -e");
-	cmds[i++] = ft_strdup("echo hola que tal? muy bien, y tu?");
 	cmds[i++] = ft_strdup("cat -e");
 	cmds[i++] = ft_strdup("cat");
 	cmds[i++] = ft_strdup("cat");
 	cmds[i++] = ft_strdup("cat");
-	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat ");
 	cmds[i++] = ft_strdup("cat");
 	cmds[i++] = ft_strdup("cat");
 	cmds[i++] = ft_strdup("cat");
 	cmds[i++] = ft_strdup("cat");
-	cmds[i++] = ft_strdup("cat");
-	cmds[i++] = ft_strdup("cat -e");
+	cmds[i++] = ft_strdup("cat -be");
+	// cmds[i++] = ft_strdup("echo hola que tal? muy bien, y tu?");
 	cmds[i++] = 0;
 	cmds[i++] = ft_strdup("cat -e");
 	cmds[i++] = ft_strdup("cat -e");
