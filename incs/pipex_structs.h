@@ -10,7 +10,7 @@ typedef struct s_vars
 	char	*outfile;
 	// char	**envp;
 	char	**path;
-	t_list	**_envp;
+	// t_list	**_envp;
 	t_list	**envp;
 	int		here_doc;
 	char	*here_doc_lim;

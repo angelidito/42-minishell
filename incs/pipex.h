@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/16 01:08:31 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:59:42 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "colors.h"
 # include "minishell.h"
 # include "pipex_structs.h"
+# include "minishell_structs.h"
 # include <fcntl.h> /* Open function */
 # include <time.h>
 
@@ -43,6 +44,7 @@ void	set_vars(int argc, char **argv, char **envp, t_vars *vars);
 // CMD
 
 t_cmd	*get_t_cmd(t_vars *vars, int cmd);
+void	free_t_cmd(t_cmd *command);
 
 //	ERRORS
 
@@ -72,6 +74,7 @@ int		open_out(char *outfile, int flags, int mode, int pid);
 
 //	PIPEX
 
-int		execute(t_vars *vars);
+int		is_builtin(t_vars *vars, int n);
+void	exec_builtin(t_vars *vars, int n);
 
 #endif
