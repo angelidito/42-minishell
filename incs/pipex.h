@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:44:24 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 20:42:48 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:00:03 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	heredoc(char *limiter);
 int		open_in(char *infile, int flags);
 int		open_out(char *outfile, int flags, int mode, int pid);
 
-//	PIPEX
+//	BUILT-IN
 
 int		is_builtin(t_vars *vars, int n);
 void	exec_builtin(t_vars *vars, int cmd);

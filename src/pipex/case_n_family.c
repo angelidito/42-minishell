@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:42:08 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 21:45:21 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:49:09 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	n_child(t_vars *vars, int *pipe_fd)
 	int		fd_in;
 	t_cmd	*command;
 
-	printf("n_child\n");
+	// printf("n_child\n");
 	command = get_t_cmd(vars, 0);
 	if (!command)
 		pipex_pf_exit("Malloc error.", STDERR_FILENO);
@@ -36,16 +36,26 @@ void	n_child(t_vars *vars, int *pipe_fd)
 	pipex_exec_cmd(command, lst_to_arr(vars->envp));
 }
 
+/**
+ * When the first command is a built-in, executes it.
+ * More specifically, redirects input and output, executes it, and then
+ * restores the original input and output.
+ * 
+ * @param vars 
+ * @param pipe_fd
+ */
 void	n_child_builtin(t_vars *vars, int *pipe_fd)
 {
 	int	fd_in;
 	int	original_stdin;
 	int	original_stdout;
 
-	printf("n_child_builtin\n");
+	// printf("n_child_builtin\n");
 	original_stdin = dup(STDIN_FILENO);
 	original_stdout = dup(STDOUT_FILENO);
-	fd_in = open_in(vars->infile, O_RDONLY); // TODO: los builtins tienen input?
+	// TODO: los builtins tienen input?
+	// siquiera alguno tiene input?
+	fd_in = open_in(vars->infile, O_RDONLY);
 	dup2(fd_in, STDIN_FILENO);
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[0]);
@@ -56,12 +66,23 @@ void	n_child_builtin(t_vars *vars, int *pipe_fd)
 	close(pipe_fd[1]);
 }
 
+/**
+ * Executes a command and redirects the output to the output file or to the pipe
+ * that connects it to partent process.
+ *
+ * @param vars The variables used in the program.
+ * @param pipe_fd The pipe.
+ * @param fd_out The file descriptor of the output file or the parent's pipe.
+ * @param cmd The command to execute.
+ */
 void	n_parent_builtin(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
 	int	original_stdin;
 	int	original_stdout;
 
-	printf("n_parent_builtin\n");
+	// printf("n_parent_builtin\n");
+	// TODO: sin esto no funciona, por qué narices pasa esto?
+	printf("");
 	original_stdin = dup(STDIN_FILENO);
 	original_stdout = dup(STDOUT_FILENO);
 	dup2(pipe_fd[0], STDIN_FILENO);
@@ -72,7 +93,7 @@ void	n_parent_builtin(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 	close(fd_out);
 	close(pipe_fd[0]);
 	pipex_case_n_cmds(vars, pipe_fd, cmd);
-	// close(pipe_fd[1]); Cerrar esto mas arriba provoca fallos
+	// close(pipe_fd[1]); // Cerrar esto mas arriba provoca fallos
 }
 
 /**
@@ -88,7 +109,7 @@ void	n_parent(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 {
 	t_cmd	*command;
 
-	printf("n_parent\n");
+	// printf("n_parent\n");
 	command = get_t_cmd(vars, cmd);
 	// printf("cmd: %s\n", command->cmd);
 	if (!command)

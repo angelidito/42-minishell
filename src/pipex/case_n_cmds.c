@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 21:28:11 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:01:28 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,38 +98,3 @@ void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
 		n_parent(vars, pipe_fd, fd_out, n_comands - 1);
 	waitpid(pid, NULL, 0);
 }
-
-// void	pipex_case_n_cmds(t_vars *vars, int *prev_fd, int n_comands)
-// {
-// 	int		pipe_fd[2];
-// 	pid_t	pid;
-// 	int		fd_out;
-// 	int		builtin;
-
-// 	// if (n_comands == 0)
-// 	// 	return ;
-// 	// builtin = is_builtin(vars, n_comands - 1);
-// 	builtin = 0;
-// 	pid = get_pid(builtin);
-// 	if (!builtin)
-// 		if (pipe(pipe_fd) == -1)
-// 			pipex_my_perror("\033[1;31mPipe error: ");
-// 	if (pid == -1)
-// 		pipex_my_perror("\033[1;31mError while forking.");
-// 	else
-// 		fd_out = get_fd_out(vars, prev_fd, pid);
-// 	// if (builtin)
-// 	// {
-// 	// 	exec_builtin(vars, n_comands - 1);
-// 	// 	if (n_comands > 1)
-// 	// 		pipex_case_n_cmds(vars, pipe_fd, n_comands - 1);
-// 	// }
-// 	// else
-// 	if (pid == 0 && n_comands > 1)
-// 		pipex_case_n_cmds(vars, pipe_fd, n_comands - 1);
-// 	else if (pid == 0)
-// 		n_child(vars, pipe_fd);
-// 	else if (n_comands > 1)
-// 		n_parent(vars, pipe_fd, fd_out, n_comands - 1);
-// 	waitpid(pid, NULL, 0);
-// }

@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:21:15 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/28 18:51:55 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:05:36 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Creates and returns a `t_cmd` struct with information about a command,
  * including its arguments and file path.
  *
- *  TODO: fix for script names inside quotes, and for relative/absolute paths.
+ * TODO: fix for script names inside quotes, and for relative/absolute paths.
  *
  * @param vars The pipex variables struct
  * @param pos The number of the command to get
@@ -39,7 +39,7 @@ t_cmd	*get_t_cmd(t_vars *vars, int pos)
 
 void	free_t_cmd(t_cmd *command)
 {
-	// ! TODO: con esto peta. no sé ni por qué ni si dará leaks sin ello
+	// ! TODO: con esto peta. no sé ni por qué, ni si dará leaks sin ello
 	// free(command->cmd);
 	ft_freestrarr(command->args);
 	free(command->file);
