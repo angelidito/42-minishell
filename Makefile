@@ -19,6 +19,7 @@ SRC				=	\
 					src/built-ins/pwd.c \
 					src/built-ins/unset.c \
 					src/built-ins/built-in.c \
+					src/pipex/built-in.c \
 					src/pipex/case_1_cmds.c \
 					src/pipex/case_n_cmds.c \
 					src/pipex/case_n_family.c \
@@ -47,6 +48,7 @@ SRC_PIPEX		=	\
 					src/built-ins/pwd.c \
 					src/built-ins/unset.c \
 					src/built-ins/built-in.c \
+					src/pipex/built-in.c \
 					src/pipex/case_1_cmds.c \
 					src/pipex/case_n_cmds.c \
 					src/pipex/case_n_family.c \
