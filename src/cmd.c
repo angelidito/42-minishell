@@ -72,14 +72,24 @@ char	*get_next_element(char *str)
 	return (element);
 }
 
-char	*get_infile(char *str)
+char	**get_infile(char *str)
 {
-	char	*infile;
+	char	**infile;
 	int		i;
+	int		inf;
 
-	infile = NULL;
 	i = 0;
-	while (str[i] && !infile)
+	inf = 0;
+	while (str[i])
+	{
+		if (str[i] == '<')
+			inf++;
+		i++;
+	}
+	infile = malloc((inf * sizeof(char *)) + 1);
+	i = 0;
+	inf = 0;
+	while (str[i])
 	{
 		if (str[i] == '<')
 		{
@@ -87,24 +97,30 @@ char	*get_infile(char *str)
 			{
 				if (ft_strchr("!#&(<>`", str[i + 2]))
 				{
-					// Syntax Error
+					i = 0;
+					while (infile[i])
+					{
+						free(infile[i]);
+						i++;
+					}
+					free(infile);
 					return (NULL);
 				}
 				else
 				{
-					// infile = heredoc
-					return (NULL);
+					infile[inf] = malloc((7 * sizeof(char)) + 1); // heredoc + \0
+					ft_strlcpy(infile[inf], "heredoc", 8);
+					inf++;
 				}
 			}
 			else
 			{
-				infile = get_next_element(str + 1);
+				infile[inf] = get_next_element(str + 1);
+				inf++;
 			}
 		}
 		i++;
 	}
-	if (!infile)
-		return (STDIN_FILENO);
 	return (infile);
 }
 

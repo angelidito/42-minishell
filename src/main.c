@@ -4,7 +4,8 @@
 // test with: ./"script of four words" arg1 "arg number 2" ' arg #3'  " arg 'number 4' this is \"bad\" ..."
 int	parse(char *str, t_list **env)
 {
-	t_vars	*vars;
+	t_mini_vars	*vars;
+	t_cmd		*cmd;
 	int		status;
 
 	// printf("Parsing: %s\n", str);
@@ -14,6 +15,7 @@ int	parse(char *str, t_list **env)
 		printf("malloc error\n");
 		return (-1);
 	}
+	cmd = get_t_cmd()
 	status = execute_cmd(vars, env);
 	return (status);
 }

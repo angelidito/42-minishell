@@ -12,15 +12,12 @@ NAME_PIPEX		=	pipex
 # ****************************     MINISHELL     ***************************** #
 SRC				=	\
 					src/pipex/case_n_cmds.c \
-					src/pipex/case_1_cmds.c \
 					src/pipex/checking_setting.c \
-					src/pipex/cmd.c \
 					src/pipex/errors.c \
 					src/pipex/get_cmd_args.c \
 					src/pipex/getting_executing.c \
 					src/pipex/here_doc.c \
-					src/pipex/open.c \
-					src/pipex/pipex.c \
+					src/pipex/pipex_main.c \
 					src/env.c \
 					src/utils.c \
 					src/main.c \
@@ -32,6 +29,10 @@ SRC				=	\
 					src/built-ins/pwd.c \
 					src/built-ins/unset.c \
 					src/built-ins/built-in.c
+# src/pipex/case_1_cmds.c
+# src/pipex/cmd.c
+# src/pipex/open.c
+# Te has dejado esto tio
 					
 # src/pipex/ft_functions.c
 
