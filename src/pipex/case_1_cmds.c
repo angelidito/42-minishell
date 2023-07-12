@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/30 15:27:52 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:58:02 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
  * and then restores the original standard input and output.
  * 
  * @param vars 
- * @param fd_out The file descriptor for the output file.
  * @param fd_in The file descriptor for the input file.
+ * @param fd_out The file descriptor for the output file.
  */
-void	builtin_case(t_vars *vars, int fd_out, int fd_in)
+void	builtin_case(t_vars *vars, int fd_in, int fd_out)
 {
 	int	original_stdin;
 	int	original_stdout;
@@ -38,7 +38,7 @@ void	builtin_case(t_vars *vars, int fd_out, int fd_in)
 	close(fd_in);
 }
 
-void	usual_cmd_case(t_vars *vars, int fd_out, int fd_in)
+void	usual_cmd_case(t_vars *vars, int fd_in, int fd_out)
 {
 	t_cmd	*command;
 
@@ -65,16 +65,16 @@ void	pipex_case_1_cmd(t_vars *vars)
 	int	fd_out;
 	int	fd_in;
 
-	printf("pipex_case_1_cmd\n");
-	printf("vars->infile: %s\n", vars->infile);
-	printf("vars->outfile: %s\n", vars->outfile);
+	// printf("pipex_case_1_cmd\n");
+	// printf("vars->infile: %s\n", vars->infile);
+	// printf("vars->outfile: %s\n", vars->outfile);
 	fd_in = open_in(vars->infile, O_RDONLY);
 	fd_out = open_out(vars->outfile, O_CREAT | O_RDWR | vars->output_flag, 0644,
 			1);
-	printf("fd_out: %d\n", fd_out);
-	printf("fd_in: %d\n", fd_in);
+	// printf("fd_out: %d\n", fd_out);
+	// printf("fd_in: %d\n", fd_in);
 	if (!is_builtin(vars, 0))
-		usual_cmd_case(vars, fd_out, fd_in);
+		usual_cmd_case(vars, fd_in, fd_out);
 	else
 		builtin_case(vars, fd_in, fd_out);
 }

@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/30 15:23:07 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:58:15 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(int argc, char const **argv, char **envp)
 	char	**cmds;
 	int i =0;
 	cmds = ft_calloc(55, sizeof(char *));
-	cmds[i++] = ft_strdup("env");
+	cmds[i++] = ft_strdup("pwd");
 	cmds[i++] = 0;
+	cmds[i++] = ft_strdup("  ls ");
+	cmds[i++] = ft_strdup("echo HOLA QUE TAL");
+	cmds[i++] = ft_strdup("echo HOLA QUE TAL");
 	cmds[i++] = ft_strdup("echo HOLA QUE TAL");
 	cmds[i++] = ft_strdup("cat -b");
 	cmds[i++] = ft_strdup("cat ");

@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:50:57 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/30 15:00:44 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:55:49 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ void	exec_builtin(t_vars *vars, int cmd)
 	name = command->args[0];
 	if (!ft_strcmp(name, "echo"))
 		ft_echo(command);
-	if (!ft_strcmp(name, "cd"))
-		;
-	if (!ft_strcmp(name, "pwd"))
+	else if (!ft_strcmp(name, "cd"))
+		print_stderr("TODO: built-in not implemented");
+	else if (!ft_strcmp(name, "pwd"))
 		ft_pwd(vars->envp);
-	if (!ft_strcmp(name, "export"))
-		;
-	if (!ft_strcmp(name, "unset"))
-		;
-	if (!ft_strcmp(name, "env"))
+	else if (!ft_strcmp(name, "export"))
+		print_stderr("TODO: built-in not implemented");
+	else if (!ft_strcmp(name, "unset"))
+		print_stderr("TODO: built-in not implemented");
+	else if (!ft_strcmp(name, "env"))
 		ft_env(vars->envp);
-	if (!ft_strcmp(name, "exit"))
-		;
+	else if (!ft_strcmp(name, "exit"))
+		print_stderr("TODO: built-in not implemented");
+	else
+		print_stderr("Error: not a built-in");
 	// free_t_cmd(command);
 }
