@@ -5,4 +5,5 @@
 *.o
 minishell
 libs/mylibft/libft.a
-pipex
+./pipex
+out

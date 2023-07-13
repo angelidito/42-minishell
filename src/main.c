@@ -4,17 +4,17 @@
 // test with: ./"script of four words" arg1 "arg number 2" ' arg #3'  " arg 'number 4' this is \"bad\" ..."
 int	parse(char *str, t_list **env)
 {
-	t_vars	*vars;
-	int		status;
+	t_vars	*vars = NULL;
+	int		status = 0;
 
 	// printf("Parsing: %s\n", str);
-	vars = get_t_vars(str, env);
+	// vars = get_t_vars(str, env);
 	if (!vars)
 	{
-		printf("malloc error\n");
+		ft_printf("malloc error\n");
 		return (-1);
 	}
-	status = execute_cmd(vars, env);
+	// status = execute_cmd(vars, env);
 	return (status);
 }
 
@@ -65,6 +65,6 @@ int	main(int argc, char const *argv[], char **envp)
 	{
 		exit = prompt(env);
 	}
-	printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
+	ft_printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
 	return (0);
 }

@@ -11,9 +11,18 @@ NAME_PIPEX		=	pipex
 
 # ****************************     MINISHELL     ***************************** #
 SRC				=	\
-					src/pipex/case_n_cmds.c \
+					src/built-ins/cd.c \
+					src/built-ins/echo.c \
+					src/built-ins/env.c \
+					src/built-ins/exit.c \
+					src/built-ins/export.c \
+					src/built-ins/pwd.c \
+					src/built-ins/unset.c \
+					src/built-ins/built-in.c \
+					src/pipex/built-in.c \
 					src/pipex/case_1_cmds.c \
-					src/pipex/checking_setting.c \
+					src/pipex/case_n_cmds.c \
+					src/pipex/case_n_family.c \
 					src/pipex/cmd.c \
 					src/pipex/errors.c \
 					src/pipex/get_cmd_args.c \
@@ -23,15 +32,7 @@ SRC				=	\
 					src/pipex/pipex.c \
 					src/env.c \
 					src/utils.c \
-					src/main.c \
-					src/built-ins/cd.c \
-					src/built-ins/echo.c \
-					src/built-ins/env.c \
-					src/built-ins/exit.c \
-					src/built-ins/export.c \
-					src/built-ins/pwd.c \
-					src/built-ins/unset.c \
-					src/built-ins/built-in.c
+					src/main.c 
 					
 # src/pipex/ft_functions.c
 
@@ -39,8 +40,18 @@ OBJS				=	$(SRC:.c=.o)
 
 # ****************************       PIPEX       ***************************** #
 SRC_PIPEX		=	\
-					src/pipex/case_n_cmds.c \
+					src/built-ins/cd.c \
+					src/built-ins/echo.c \
+					src/built-ins/env.c \
+					src/built-ins/exit.c \
+					src/built-ins/export.c \
+					src/built-ins/pwd.c \
+					src/built-ins/unset.c \
+					src/built-ins/built-in.c \
+					src/pipex/built-in.c \
 					src/pipex/case_1_cmds.c \
+					src/pipex/case_n_cmds.c \
+					src/pipex/case_n_family.c \
 					src/pipex/checking_setting.c \
 					src/pipex/cmd.c \
 					src/pipex/errors.c \

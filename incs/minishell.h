@@ -5,7 +5,8 @@
 # include "../libs/mylibft/incs/libft.h"
 # include "colors.h"
 # include "minishell_structs.h"
-# include "pipex.h"
+# include "pipex_structs.h"
+// # include "pipex.h"
 # include <curses.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto,
 								// tputs
 # include <dirent.h>            // opendir, readdir, closedir
@@ -36,7 +37,7 @@ t_list	**get_env_lst(int argc, char const *argv[], char **envp);
 
 int		execute_cmd(t_cmd *cmd, t_list **env);
 
-t_mini_vars	*get_t_vars(char *str, t_list **env);
+t_mini_vars	*get_t_vars(char *str, t_list **env); // TODO: borrar? No exite esta funcion
 
 // UTILS
 
@@ -57,6 +58,11 @@ void	ft_env(t_list **env);
 void    ft_pwd(t_list **env);
 void    ft_echo(t_cmd *cmd);
 
+// PIPEX
+
+int		pipex(t_vars *vars);
+t_cmd	*get_t_cmd(t_vars *vars, int cmd);
+void	free_t_cmd(t_cmd *command);
 
 
 #endif

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   built-in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:14:15 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:38:37 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:27:55 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
 
-int check_builtins(char *str)
+int	check_builtins(char *str)
 {
-    printf("%s\n", str);
-    return (0);
+	ft_printf("%s\n", str);
+	return (0);
 }

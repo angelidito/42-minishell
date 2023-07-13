@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:21:18 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:43:51 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:28:01 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
 
+// TODO: no agregar un espacio al final
 void    ft_echo(t_cmd   *cmd)
 {
 	int	i;
@@ -19,8 +20,9 @@ void    ft_echo(t_cmd   *cmd)
 	i = 1;
 	while (cmd->args[i])
 	{
-		printf("%s ", cmd->args[i]);
+		
+		ft_printf("%s ", cmd->args[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
