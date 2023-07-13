@@ -11,7 +11,7 @@ int	parse(char *str, t_list **env)
 	// vars = get_t_vars(str, env);
 	if (!vars)
 	{
-		printf("malloc error\n");
+		ft_printf("malloc error\n");
 		return (-1);
 	}
 	// status = execute_cmd(vars, env);
@@ -65,6 +65,6 @@ int	main(int argc, char const *argv[], char **envp)
 	{
 		exit = prompt(env);
 	}
-	printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
+	ft_printf("%sMinishell has finished%s\n", TEXT_BG_YELLOW, TEXT_RESET);
 	return (0);
 }

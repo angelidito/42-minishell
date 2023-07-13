@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:21:18 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/28 20:35:33 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:28:01 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void    ft_echo(t_cmd   *cmd)
 	i = 1;
 	while (cmd->args[i])
 	{
-		printf("%s ", cmd->args[i]);
+		
+		ft_printf("%s ", cmd->args[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }

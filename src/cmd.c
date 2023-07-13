@@ -233,11 +233,11 @@ int	execute_cmd(t_cmd *cmd, t_list **env)
 	if (pid == 0)
 	{
 		if (execve(cmd->file, cmd->args, lst_to_arr(env)) == -1)
-			printf("minishell: %s: %s\n", cmd->cmd, strerror(errno));
+			ft_printf("minishell: %s: %s\n", cmd->cmd, strerror(errno));
 		exit(1);
 	}
 	else if (pid < 0)
-		printf("minishell: %s: %s\n", cmd->cmd, strerror(errno));
+		ft_printf("minishell: %s: %s\n", cmd->cmd, strerror(errno));
 	else
 	{
 		waitpid(pid, &status, 0);

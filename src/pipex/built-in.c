@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 14:50:57 by angmarti          #+#    #+#             */
-/*   Updated: 2023/07/12 15:55:49 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:09:09 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	is_builtin(t_vars *vars, int pos)
 		|| 0 == ft_strcmp(name, "env")    //
 		|| 0 == ft_strcmp(name, "exit"))  //
 	{
-		// printf("builtin: %s\n", name);
 		ft_freestrarr(args);
 		return (1);
 	}

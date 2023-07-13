@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nucieda- <nucieda-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:21:28 by nucieda-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:31:55 by nucieda-         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:15:37 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void    ft_pwd(t_list **env)
     char    *pwd;
 
     pwd = my_getenv("PWD", env);
-    printf("%s\n", pwd);
+    ft_printf("%s\n", pwd);
 }

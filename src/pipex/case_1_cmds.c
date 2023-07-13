@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:43:05 by angmarti          #+#    #+#             */
-/*   Updated: 2023/07/12 15:58:02 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:45:43 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	builtin_case(t_vars *vars, int fd_in, int fd_out)
 	int	original_stdin;
 	int	original_stdout;
 
-	printf("pipex_case_1_cmd_builtin\n");
+	// ft_printf("pipex_case_1_cmd_builtin\n");
 	original_stdin = dup(STDIN_FILENO);
 	original_stdout = dup(STDOUT_FILENO);
 	dup2(fd_in, STDIN_FILENO);
@@ -38,10 +38,32 @@ void	builtin_case(t_vars *vars, int fd_in, int fd_out)
 	close(fd_in);
 }
 
+/**
+ * Executes a command with input and output file descriptors.
+ * 
+ * @param vars A pointer to a structure of type t_vars,
+	which likely contains various variables and
+ * data related to the program's execution.
+
+	* @param fd_in The file descriptor for the input file. This is the file that will be read from by the
+ * command.
+
+	* @param fd_out The parameter `fd_out` represents the file descriptor for the output file. It is used
+
+	* in the `dup2` function to redirect the standard output to the specified file descriptor.
+ */
 void	usual_cmd_case(t_vars *vars, int fd_in, int fd_out)
 {
 	t_cmd	*command;
+	pid_t	pid;
 
+	pid = fork();
+	if (pid == -1)
+		pipex_my_perror("\033[1;31mError while forking.");
+	else if (pid)
+		return ;
+	// else if (pid == 0)
+	// {
 	command = get_t_cmd(vars, 0);
 	if (!command)
 		pipex_pf_exit("Malloc error.", STDERR_FILENO);
@@ -49,6 +71,7 @@ void	usual_cmd_case(t_vars *vars, int fd_in, int fd_out)
 	dup2(fd_in, STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
 	pipex_exec_cmd(command, lst_to_arr(vars->envp));
+	// }
 }
 
 /**

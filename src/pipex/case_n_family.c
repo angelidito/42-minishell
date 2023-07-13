@@ -6,7 +6,7 @@
 /*   By: angmarti <angmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 20:42:08 by angmarti          #+#    #+#             */
-/*   Updated: 2023/06/30 14:49:09 by angmarti         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:47:19 by angmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	n_child_builtin(t_vars *vars, int *pipe_fd)
 	int	original_stdin;
 	int	original_stdout;
 
-	// printf("n_child_builtin\n");
 	original_stdin = dup(STDIN_FILENO);
 	original_stdout = dup(STDOUT_FILENO);
 	// TODO: los builtins tienen input?
@@ -81,8 +80,9 @@ void	n_parent_builtin(t_vars *vars, int *pipe_fd, int fd_out, int cmd)
 	int	original_stdout;
 
 	// printf("n_parent_builtin\n");
-	// TODO: sin esto no funciona, por qué narices pasa esto?
-	printf("");
+	// TODO: sin esto no funcionaba, por qué narices pasa esto?
+	// Comprobar si ahora si al cambiar a ft_printf
+	printf(""); 
 	original_stdin = dup(STDIN_FILENO);
 	original_stdout = dup(STDOUT_FILENO);
 	dup2(pipe_fd[0], STDIN_FILENO);
